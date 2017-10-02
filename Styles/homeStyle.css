@@ -1,0 +1,96 @@
+header nav ul li:first-child a {
+	color: #FFF9DB;
+}
+
+@media screen and (min-height: 932px) {
+	.central {
+		height: calc(100vh - 70px);
+	}
+}
+
+.upperSection {
+	background-image: url("../Images/mounzer-awad-348688.jpg");
+	overflow: auto;
+	padding: 1px;
+	background-size: cover;	
+}
+
+.upperSection .blurb {
+	margin: 100px;
+	width: 250px;
+	border-radius: 10px;
+	background-color: #D7EBFE;
+	padding: 10px;
+	color: #23408F;
+	float: right;
+}
+
+.upperSection .blurb h2 {
+	text-align: center;
+	margin: 0;
+}
+
+.upperSection .blurb p {
+	margin: 10px;
+}
+
+.upperSection .blurb .link {
+	text-align: center;
+	margin: 20px 10px 5px 10px;
+}
+
+.upperSection .blurb .link a {
+	background-color: #75CABE;	
+	border: 0px;
+	color: #23408F;
+	padding: 5px;
+	font-size: 1rem;
+	letter-spacing: 1.2px;
+	text-decoration: none;
+}
+
+.lowerSection {
+	overflow: auto;
+	padding: 4px;
+}
+
+.lowerSection .infoItem {
+	width: 33.3%;
+	padding: 4px;
+	float: left;
+}
+
+.lowerSection .infoItem img {
+	width: 100%;
+}
+
+.lowerSection .infoItem p {
+	margin: 5px;
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+@media screen and (max-width: 750px) {
+	.lowerSection {
+		overflow: visible;
+	}
+
+	.lowerSection .infoItem {
+		margin: auto;
+		width: 55%;
+		float: none;
+	}
+	
+	.lowerSection .infoItem p {
+		font-size: 1.2rem;
+	}
+	
+	.upperSection .blurb {
+		margin: 2%;
+	}
+}
+
+
+
+
+

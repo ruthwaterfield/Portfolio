@@ -1,0 +1,72 @@
+header nav ul li:nth-child(2) a {
+	color: #FFF9DB;
+}
+
+@media screen and (min-height: 1175px) {
+	.central {
+		height: calc(100vh - 70px);
+	}
+}
+
+.profile {
+	background-color: #FFF9DB;
+	padding: 3%;
+	vertical-align: middle;
+}
+
+.profile img {
+	width: 30%;
+	vertical-align: middle;
+	
+}
+
+.profile p {
+	margin: 0;
+	padding: 3%;
+	width: 69%;
+	display: inline-block;
+	vertical-align: middle;
+	
+}
+
+.lowerSection .infoItem {
+	padding: 3%;
+	vertical-align: middle;
+}
+
+.lowerSection .infoItem img {
+	width: 35%;
+	vertical-align: middle;
+}
+
+.lowerSection .infoItem p {
+	margin: 0;
+	padding: 3%;
+	width: 64%;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+@media screen and (max-width: 750px) {
+	
+	.profile img {
+		margin: 0 25%;
+		width: 50%;
+		padding-top: 3px;
+	}
+	
+	.profile p {
+		width: 100%;
+	}
+	
+	.lowerSection .infoItem img {
+		margin: 0 15%;
+		width: 70%;
+	}
+	
+	.lowerSection .infoItem p {
+		width: 100%;
+	}
+}
+
+

@@ -1,0 +1,127 @@
+* {
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: simplifica;
+	src: url(SIMPLIFICATypeface.ttf);
+}
+
+body {
+	font-family: simplifica, Helvetica, sans-serif;
+	margin: 0;
+}
+
+header {
+	position: fixed;
+	width: 100%;
+	background-color: #75CABE;	
+	z-index: 2;
+}
+
+header h1 {
+	margin: 3px;
+	text-align: center;
+	font-size: 5rem;
+	color: #23408F;
+}
+
+header nav {
+	width: 100%;
+}
+
+header nav ul {
+	-webkit-padding-start: 0;
+	text-align: center;
+}
+
+header nav ul li {
+	display: inline-block;
+	padding: 0 5%;
+	line-height: 1.5rem;
+}
+
+header nav ul li a {
+	text-decoration: none;
+	font-size: 1.5rem;
+	color: #23408F;
+}
+
+article {
+	width: 100%;
+	background-color: #23408F;
+}
+
+.central {
+	margin: 0 auto;
+	width: 70%;
+	background-color: #D7EBFE;
+	padding-top: 153px;
+}
+
+p {
+	color: #23408F;
+	letter-spacing: 1.2px;
+}
+
+img {
+	border-radius: 10px;
+}
+
+footer {
+	height: 70px;
+	background-color: #75CABE;
+	margin: 0;
+}
+
+footer nav {
+	height: 45px;
+	overflow: auto;
+}
+
+footer nav a {
+	padding: 1px;
+	margin: 0;
+	float: right;
+	background-color: #75CABE;
+}
+
+footer nav a img {
+	height: 38px;
+}
+
+footer p {
+	margin: 0;
+	padding: 0.5px;
+	text-align: center;
+}
+
+@media screen and (max-width: 750px) {
+	
+	footer nav {
+		overflow: visible;
+		text-align: center;
+	}
+	
+	footer nav a {
+		float: none;
+		display: inline-block;
+	}
+}
+
+@media screen and (max-width: 440px) {
+	
+	header h1 {
+		font-size: 4rem;
+	}
+	
+	header nav ul li {
+		padding: 0 2%;
+	}
+	
+	.central {
+		padding-top: 133px;
+	}
+}
+
+
