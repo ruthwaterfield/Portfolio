@@ -12,13 +12,16 @@
 <form method="POST" action="editAboutMe.php">
     Entry:
     <label title="Id"/>
-    <input name="id" type="number" readonly value="1"> <br/>
+    <input name="id" type="number" value="1"> <br/>
     Content Name:
     <label title="Content Name:"/>
     <input name="content_name" type="text" required maxlength="20" value="<?php echo getTextContentsData(1,'content_name')?>"> <br/>
     Text Content:
     <label title="Text Content"/>
     <input name="text_content" type="text" required value="<?php echo getTextContentsData(1,'text_content')?>"> <br/>
+    Delete this record?
+    <label title="Delete record?"/>
+    <input name="delete" type="checkbox"> <br/>
     <input type="submit" value="Update">
 </form>
 
@@ -34,6 +37,12 @@
     <input name="text_content" type="text" required value=""> <br/>
     <input type="submit" value="Add">
 </form>
+
+<br/>
+<br/>
+
+
+
 
 </body>
 </html>
