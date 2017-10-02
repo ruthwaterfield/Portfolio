@@ -1,7 +1,13 @@
 <?php
 
-
-function getData(string $fieldName)  {
+/**
+ * getData selects the desired field in the TextContents table
+ *
+ * @param string $fieldName The desired column name
+ *
+ * @return string The data in string format
+ */
+function getTextContentsData(string $fieldName) : string {
     try {
         $db = new PDO('mysql:host=127.0.0.1;dbname=WebsitePrototypeDb', 'root', '');
         $db ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
