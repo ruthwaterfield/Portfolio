@@ -4,9 +4,6 @@
 if(isset($_POST['content_name'], $_POST['text_content'])) {
     echo addTextContentsData($_POST['content_name'], $_POST['text_content']);
 }
-else {
-    echo "error!";
-}
 
 /**
  * addTextContentsData adds given data as a new record in the TextContents table
