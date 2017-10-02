@@ -1,57 +1,74 @@
 <?php
 
 
-/**
- * getContentName returns the first text_content field in the TextContents table of the database
- *
- * @return string the text content
- */
-function getTextContent() : string {
+function getData(string $fieldName)  {
     try {
         $db = new PDO('mysql:host=127.0.0.1;dbname=WebsitePrototypeDb', 'root', '');
-        $db -> setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $db ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `text_content` FROM `TextContents` LIMIT 1;";
+        $sql = "SELECT `content_name`, `text_content` FROM `TextContents` LIMIT 1;";
         $query = $db -> prepare($sql);
 
+        //$query->bindParam(':field', $fieldName, PDO::PARAM_STR, 20);
+
         $query->execute();
-        $returnedArray = $query->fetch();
-        $result =$returnedArray["text_content"];
+        $resultingArray = $query->fetchAll();
+
+//        echo var_dump($resultingArray);
+        $result = $resultingArray[0][$fieldName];
     }
-    catch(Exception $e) {
+    catch (Exception $e) {
         $result = $e->getMessage();
     }
 
     return $result;
 }
 
-
-
-/**
- * getContentName returns the first text_content field in the TextContents table of the database
- *
- * @return string the text content
- */
-function getContentName() : string {
-    try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsitePrototypeDb', 'root', '');
-        $db -> setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $sql = "SELECT `content_name` FROM `TextContents` LIMIT 1;";
-        $query = $db -> prepare($sql);
-
-        $query->execute();
-        $returnedArray = $query->fetch();
-        $result =$returnedArray["content_name"];
-    }
-    catch(Exception $e) {
-        $result = $e->getMessage();
-    }
-
-    return $result;
-}
+//
+///**
+// * getContentName returns the first text_content field in the TextContents table of the database
+// *
+// * @return string the text content
+// */
+//function getTextContent() : string {
+//    try {
+//        $returnedArray = getTextContents();
+//        $returnedArray["text_content"];
+//    }
+//    catch(Exception $e) {
+//        $result = $e->getMessage();
+//    }
+//
+//    return $result;
+//}
+//
+//
+//
+///**
+// * getContentName returns the first text_content field in the TextContents table of the database
+// *
+// * @return string the text content
+// */
+//function getContentName() : string {
+//    try {
+//        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsitePrototypeDb', 'root', '');
+//        $db -> setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+//        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//
+//        $sql = "SELECT `content_name` FROM `TextContents` LIMIT 1;";
+//        $query = $db -> prepare($sql);
+//
+//        $query->execute();
+//        $returnedArray = $query->fetch();
+//        $result =$returnedArray["content_name"];
+//    }
+//    catch(Exception $e) {
+//        $result = $e->getMessage();
+//    }
+//
+//    return $result;
+//}
 
 
 
