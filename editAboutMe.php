@@ -1,27 +1,35 @@
 <?php
 
+
+if(isset($_POST['id'], $_POST['content_name'], $_POST['text_content'])) {
+    echo updateTextContentsData($_POST['id'], $_POST['content_name'], $_POST['text_content']);
+}
+else {
+    echo "error!";
+}
+
 /**
  * getData selects the desired field in the TextContents table
  *
+ * @param int $recordId The selected record id
  * @param string $fieldName The desired column name
  *
  * @return string The data in string format
  */
-function getTextContentsData(string $fieldName) : string {
+function getTextContentsData(int $recordId, string $fieldName) : string {
     try {
         $db = new PDO('mysql:host=127.0.0.1;dbname=WebsitePrototypeDb', 'root', '');
         $db ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `content_name`, `text_content` FROM `TextContents` LIMIT 1;";
+        $sql = "SELECT `id`, `content_name`, `text_content` FROM `TextContents` WHERE `id`=:id";
         $query = $db -> prepare($sql);
 
-        //$query->bindParam(':field', $fieldName, PDO::PARAM_STR, 20);
+        $query->bindParam(':id', $recordId, PDO::PARAM_INT);
 
         $query->execute();
         $resultingArray = $query->fetchAll();
 
-//        echo var_dump($resultingArray);
         $result = $resultingArray[0][$fieldName];
     }
     catch (Exception $e) {
@@ -31,50 +39,43 @@ function getTextContentsData(string $fieldName) : string {
     return $result;
 }
 
-//
-///**
-// * getContentName returns the first text_content field in the TextContents table of the database
-// *
-// * @return string the text content
-// */
-//function getTextContent() : string {
-//    try {
-//        $returnedArray = getTextContents();
-//        $returnedArray["text_content"];
-//    }
-//    catch(Exception $e) {
-//        $result = $e->getMessage();
-//    }
-//
-//    return $result;
-//}
-//
-//
-//
-///**
-// * getContentName returns the first text_content field in the TextContents table of the database
-// *
-// * @return string the text content
-// */
-//function getContentName() : string {
-//    try {
-//        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsitePrototypeDb', 'root', '');
-//        $db -> setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-//        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-//
-//        $sql = "SELECT `content_name` FROM `TextContents` LIMIT 1;";
-//        $query = $db -> prepare($sql);
-//
-//        $query->execute();
-//        $returnedArray = $query->fetch();
-//        $result =$returnedArray["content_name"];
-//    }
-//    catch(Exception $e) {
-//        $result = $e->getMessage();
-//    }
-//
-//    return $result;
-//}
+/**
+ * updateTextContentsData updates the row with the selected id
+ *
+ * @param int $recordId The selected record id
+ * @param string $contentName The desired name for the content
+ * @param string $textContent The desired text
+ *
+ * @return string Feedback for success or errors
+ */
+function updateTextContentsData(int $recordId, string $contentName, string $textContent) : string {
+    try {
+        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsitePrototypeDb', 'root', '');
+        $db ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "UPDATE `TextContents` SET `content_name`= :contentName, `text_content`= :textContent WHERE `id`= :id;";
+        $query = $db -> prepare($sql);
+
+        $query->bindParam(':id', $recordId, PDO::PARAM_INT);
+        $query->bindParam(':contentName', $contentName, PDO::PARAM_STR, 20);
+        $query->bindParam(':textContent', $textContent, PDO::PARAM_STR);
+
+        $query->execute();
+        $result = 'Success!';
+    }
+    catch (Exception $e) {
+        $result = $e->getMessage();
+    }
+
+    return $result;
+}
+
+
+
+
+
+
 
 
 
