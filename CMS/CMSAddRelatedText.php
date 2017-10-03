@@ -9,7 +9,6 @@
 <?php
 session_start();
 echo $_SESSION['pageId'];
-var_dump($_POST);
 
 if (isset($_POST['RelatedText_sectionName']) && isset($_SESSION['pageId']) && isset($_POST['RelatedText_content']) && isset($_POST['Images_id'])) {
 if (addRelatedText($_POST['RelatedText_sectionName'], $_SESSION['pageId'], $_POST['RelatedText_content'], $_POST['Images_id'])) {

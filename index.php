@@ -67,7 +67,7 @@ include("homeFunctions.php");
 				<div class="infoItem">
                     <img src="<?php echo getPageImage('infoItem1');?>"/>
 					<p>
-						Software
+						<?php echo getTextForImage('infoItem1');?>
 					</p>
 				</div>
 				<div class="infoItem">

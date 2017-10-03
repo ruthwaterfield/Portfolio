@@ -74,3 +74,40 @@ function getPageImage(string $imageName) : string {
 
     return $result;
 }
+
+/**
+ * getTextForImage retrieves the text linked to an image(if it exists), given that image name
+ *
+ * @param string $imageName The name of the image we are interested in.
+ *
+ * @return string The related text to output
+ */
+function getTextForImage(string $imageName) : string {
+    $result = '';
+    try {
+        if(isset($_SESSION['pageId'])) {
+            $pageId = $_SESSION['pageId'];
+            $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
+            $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "SELECT `Text`.`content`, `Text`.`deleted` FROM `Text` INNER JOIN `TextForImages` ON `Text`.`id` = `TextForImages`.`textId`
+                    INNER JOIN `Images` ON `TextForImages`.`imageId` = `Images`.`id` WHERE `Images`.`imageName` = :imageName AND `Text`.`pageId` = :pageId;";
+            $query = $db->prepare($sql);
+
+            $query->bindParam(':imageName', $imageName, PDO::PARAM_STR, 20);
+            $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
+
+            $query->execute();
+            $returnedArray = $query->fetch();
+
+            if($returnedArray["deleted"]==0) {
+                $result = $returnedArray["content"];
+            }
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+
+    return $result;
+}
