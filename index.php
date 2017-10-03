@@ -50,8 +50,7 @@ include("homeFunctions.php");
 			<section class="upperSection">
 				<div class="blurb">
 					<h2>
-<!--						Lorem ipsum dolor -->
-                        <?php echo getPageText('blurb_header'); ?>
+                        <?php echo getPageText('blurbHeader'); ?>
 					</h2>
 					<p>
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -66,7 +65,7 @@ include("homeFunctions.php");
 	
 			<section class="lowerSection">
 				<div class="infoItem">
-					<img src="Images/markus-spiske-357131.jpg" />
+                    <img src="<?php echo getPageImage('infoItem1');?>"/>
 					<p>
 						Software
 					</p>

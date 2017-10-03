@@ -31,3 +31,32 @@ function getPageText(string $sectionName) : string {
     return $result;
 }
 
+function getPageImage(string $imageName) : string {
+    $result = '';
+    try {
+        if(isset($_SESSION['pageId'])) {
+            $pageId = $_SESSION['pageId'];
+
+            $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
+            $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            $sql = "SELECT `url`, `deleted` FROM `Images` WHERE `imageName` = :imageName AND `pageId` = :pageId;";
+            $query = $db->prepare($sql);
+
+            $query->bindParam(':imageName', $imageName, PDO::PARAM_STR, 20);
+            $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
+
+            $query->execute();
+            $returnedArray = $query->fetch();
+
+            if($returnedArray["deleted"]==0) {
+                $result = $returnedArray["url"];
+            }
+        }
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+
+    return $result;
+}
