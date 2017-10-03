@@ -11,6 +11,7 @@ session_start();
 
 echo $_SESSION['pageId'];
 
+//If the text form has been submitted, run the queries to add that text to the database.
 if(isset($_POST['Text_sectionName']) && isset($_SESSION['pageId']) && isset($_POST['Text_content'])) {
     if (addText($_POST['Text_sectionName'], $_SESSION['pageId'], $_POST['Text_content'])) {
         header('Location: CMSHome.php');
@@ -23,14 +24,22 @@ if(isset($_POST['Text_sectionName']) && isset($_SESSION['pageId']) && isset($_PO
     }
 }
 
+//If the image form has been submitted, run the queries to add that image to the database, then if this was successful,
+// give the option of adding text related to that image.
 if(isset($_POST['Images_imageName']) && isset($_SESSION['pageId']) && isset($_POST['Images_url'])) {
     $imageId = addImage($_POST['Images_imageName'], $_SESSION['pageId'], $_POST['Images_url']);
     if ($imageId > 0) { ?>
+        <h2>You can now return to Home or add some text related to the image you just added.</h2>
+        <a href="CMSHome.php">
+            Go back to Home
+        </a>
+        <br/> <br/>
+        <h3>Add related text:</h3>
         <form name="AddText" method="POST" action="CMSAddRelatedText.php">
             Image Id:
             <label title="Image Id:"/>
             <!--        <input name="Images.Id" type="hidden">-->
-            <input name="Images_Id" type="number" readonly value="<?php echo $imageId ?>">
+            <input name="Images_id" type="number" readonly value="<?php echo $imageId ?>">
             Image Name:
             <label title="Image Name:"/>
             <input name="Images_imageName" type="text" readonly value="<?php echo $_POST['Images_imageName'] ?>"> <br/>
@@ -43,7 +52,7 @@ if(isset($_POST['Images_imageName']) && isset($_SESSION['pageId']) && isset($_PO
             Text Content:
             <label title="Content"/>
             <input name="Text_content" type="text" required value=""> <br/>
-            <input type="submit" value="Add Related Text">
+            <input type="submit" value="Add related text">
         </form>
         <?php
     } else {
@@ -56,6 +65,15 @@ if(isset($_POST['Images_imageName']) && isset($_SESSION['pageId']) && isset($_PO
     }
 }
 
+/**
+ * addText inserts a new row into the Text table detailing a section of text.
+ *
+ * @param string $sectionName The label for that piece of text.
+ * @param int $pageId Which page the piece of text is for.
+ * @param string $content The text to add.
+ *
+ * @return bool Success or failure.
+ */
 function addText(string $sectionName, int $pageId, string $content) : bool {
     try {
         $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
@@ -80,6 +98,15 @@ function addText(string $sectionName, int $pageId, string $content) : bool {
 }
 
 
+/**
+ * addImage inserts a new row into the Images table detailing a section of text.
+ *
+ * @param string $imageName The label for that image.
+ * @param int $pageId Which page the image is for.
+ * @param string $url The location of the image.
+ *
+ * @return int The id of the image that has been added if success, or 0 if failure.
+ */
 function addImage(string $imageName, int $pageId, string $url) : int {
     try {
         $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
@@ -89,9 +116,9 @@ function addImage(string $imageName, int $pageId, string $url) : int {
         $sql = "INSERT INTO `Images` (`imageName`, `pageId`, `url`) VALUES (:imageName, :pageId, :url);";
         $query = $db->prepare($sql);
 
-        $query->bindParam(':sectionName', $imageName, PDO::PARAM_STR, 20);
+        $query->bindParam(':imageName', $imageName, PDO::PARAM_STR, 20);
         $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
-        $query->bindParam(':content', $url, PDO::PARAM_STR);
+        $query->bindParam(':url', $url, PDO::PARAM_STR);
 
         $query->execute();
 
@@ -108,7 +135,6 @@ function addImage(string $imageName, int $pageId, string $url) : int {
 
     return $result;
 }
-
 ?>
 </body>
 </html>
