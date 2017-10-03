@@ -8,6 +8,10 @@
 <body>
 <h1> Home</h1>
 
+<?php
+$_GET['pageId'] = 1;
+?>
+
 <form name="AddText" method="POST" action="CMSHomeAdd.php">
     Content Name:
     <label title="Section Name:"/>

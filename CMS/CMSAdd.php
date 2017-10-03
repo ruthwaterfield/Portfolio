@@ -7,8 +7,8 @@
 <body>
 
 <?php
-if(isset($_POST['Text.sectionName']) && isset($_POST['Text.content'])) {
-    if (addText()) {
+if(isset($_GET['pageId']) && isset($_POST['Text.sectionName']) && isset($_POST['Text.content'])) {
+    if (addText($_GET['pageId'], $_POST['Text.sectionName'], $_POST['Text.content'])) {
         header('Location: CMSHome.php');
     } else {
         echo 'Sorry, there was a problem adding the text'; ?>
@@ -19,8 +19,8 @@ if(isset($_POST['Text.sectionName']) && isset($_POST['Text.content'])) {
     }
 }
 
-if(isset($_POST['Images.imageName']) && isset($_POST['Images.url'])) {
-$imageId = addImage();
+if(isset($_GET['pageId']) && isset($_POST['Images.imageName']) && isset($_POST['Images.url'])) {
+$imageId = addImage($_GET['pageId'], $_POST['Images.imageName'], $_POST['Images.url']);
 if ($imageId > 0) { ?>
     <form name="AddText" method="POST" action="CMSHomeAddRelatedText.php">
         Image Id:
@@ -52,34 +52,23 @@ echo 'Sorry, there was a problem adding the image';
 }
 }
 
-
-/**
- * getData selects the desired field in the TextContents table
- *
- * @param int $recordId The selected record id
- * @param string $fieldName The desired column name
- *
- * @return string The data in string format
- */
-function getTextContentsData(int $recordId, string $fieldName) : string {
+function addText(int $pageId, string $sectionName, string $content) : bool {
     try {
         $db = new PDO('mysql:host=127.0.0.1;dbname=WebsitePrototypeDb', 'root', '');
         $db ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `id`, `content_name`, `text_content` FROM `TextContents` WHERE `id`=:id";
+        $sql = "INSERT INTO `TextContents` (`content_name`, `text_content`) VALUES (:contentName, :textContent);";
         $query = $db -> prepare($sql);
 
-        $query->bindParam(':id', $recordId, PDO::PARAM_INT);
+        $query->bindParam(':contentName', $contentName, PDO::PARAM_STR, 20);
+        $query->bindParam(':textContent', $textContent, PDO::PARAM_STR);
 
         $query->execute();
-        $resultingArray = $query->fetchAll();
-
-        $result = $resultingArray[0][$fieldName];
+        $result = 'Success!';
     }
     catch (Exception $e) {
         $result = $e->getMessage();
     }
 
     return $result;
-}
