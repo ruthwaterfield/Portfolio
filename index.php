@@ -1,7 +1,8 @@
 <?php
 session_start();
 $_SESSION['pageId'] = 1;
-include("homeFunctions.php");
+require_once("homeFunctions.php");
+require_once('Navigation.php');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,22 +22,22 @@ include("homeFunctions.php");
 		<nav>
 			<ul>
 				<li>
-					<a href="index.php">
+					<a href="<?php echo getPageUrlFromPageName('Home');?>">
 						HOME
 					</a>
 				</li>
 				<li>
-					<a href="aboutMe.php">
+                    <a href="<?php echo getPageUrlFromPageName('AboutMe');?>">
 						ABOUT ME
 					</a>
 				</li>
 				<li>
-					<a href="portfolio.php">
+                    <a href="<?php echo getPageUrlFromPageName('Portfolio');?>">
 						PORTFOLIO
 					</a>
 				</li>
 				<li>
-					<a href="contactMe.php">
+					<<a href="<?php echo getPageUrlFromPageName('ContactMe');?>">
 						CONTACT ME
 					</a>
 				</li>
