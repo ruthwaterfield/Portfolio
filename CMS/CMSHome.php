@@ -22,12 +22,12 @@
 <br/>
 
 <form name="AddImage" method="POST" action="CMSHomeAdd.php">
-    Content Name:
+    Image Name:
     <label title="Image Name:"/>
-    <input name="Image.imageName" type="text" required maxlength="20" value=""> <br/>
-    Text Content:
+    <input name="Images.imageName" type="text" required maxlength="20" value=""> <br/>
+    Image Url:
     <label title="Image Url"/>
-    <input name="Image.url" type="text" required value=""> <br/>
+    <input name="Images.url" type="text" required value=""> <br/>
     <input type="submit" value="Add">
 </form>
 
