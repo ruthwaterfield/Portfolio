@@ -9,22 +9,22 @@
 <nav>
     <ul>
         <li>
-            <a href="CMShome.php">
+            <a href="CMSHome.php">
                 HOME
             </a>
         </li>
         <li>
-            <a href="CMSaboutMe.php">
+            <a href="CMSAboutMe.php">
                 ABOUT ME
             </a>
         </li>
         <li>
-            <a href="CMSportfolio.php">
+            <a href="CMSPortfolio.php">
                 PORTFOLIO
             </a>
         </li>
         <li>
-            <a href="CMScontactMe.php">
+            <a href="CMSContactMe.php">
                 CONTACT ME
             </a>
         </li>

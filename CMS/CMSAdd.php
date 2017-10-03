@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> CMS Home Add </title>
+    <title> CMS Add </title>
 </head>
 
 <body>
 
 <?php
-if(isset($_POST['Text.sectionName']) && isset($_GET['pageId']) && isset($_POST['Text.content'])) {
-    if (addText($_POST['Text.sectionName'], $_GET['pageId'], $_POST['Text.content'])) {
+session_start();
+
+echo $_SESSION['pageId'];
+
+if(isset($_POST['Text_sectionName']) && isset($_SESSION['pageId']) && isset($_POST['Text_content'])) {
+    if (addText($_POST['Text_sectionName'], $_SESSION['pageId'], $_POST['Text_content'])) {
         header('Location: CMSHome.php');
     } else {
         echo 'Sorry, there was a problem adding the text'; ?>
@@ -19,37 +23,37 @@ if(isset($_POST['Text.sectionName']) && isset($_GET['pageId']) && isset($_POST['
     }
 }
 
-if(isset($_POST['Images.imageName']) && isset($_GET['pageId']) && isset($_POST['Images.url'])) {
-$imageId = addImage($_POST['Images.imageName'], $_GET['pageId'], $_POST['Images.url']);
-if ($imageId > 0) { ?>
-<!--    <form name="AddText" method="POST" action="CMSAddRelatedText.php">-->
-<!--        Image Id:-->
-<!--        <label title="ImageId:"/>-->
-<!--        <!--        <input name="Images.Id" type="hidden">-->-->
-<!--        <input name="Images.Id" type="number" readonly value="--><?php //echo $imageId ?><!--">-->
-<!--        Image Name:-->
-<!--        <label title="Image Name:"/>-->
-<!--        <input name="Images.imageName" type="text" readonly value="--><?php //echo $_POST['Images.imageName'] ?><!--"> <br/>-->
-<!--        Image Url:-->
-<!--        <label title="Image Url"/>-->
-<!--        <input name="Images.url" type="text" readonly value="--><?php //echo $_POST['Images.url'] ?><!--"> <br/>-->
-<!--        Content Name:-->
-<!--        <label title="Section Name:"/>-->
-<!--        <input name="Text.sectionName" type="text" required maxlength="20" value=""> <br/>-->
-<!--        Text Content:-->
-<!--        <label title="Content"/>-->
-<!--        <input name="Text.content" type="text" required value=""> <br/>-->
-<!--        <input type="submit" value="Add Related Text">-->
-<!--    </form>-->
-    <?php
-} else {
-echo 'Sorry, there was a problem adding the image';
-?>
-<a href="CMSHome.php">
-    Go back to Home
-</a>
-<?php
-}
+if(isset($_POST['Images_imageName']) && isset($_SESSION['pageId']) && isset($_POST['Images_url'])) {
+    $imageId = addImage($_POST['Images_imageName'], $_SESSION['pageId'], $_POST['Images_url']);
+    if ($imageId > 0) { ?>
+        <form name="AddText" method="POST" action="CMSAddRelatedText.php">
+            Image Id:
+            <label title="Image Id:"/>
+            <!--        <input name="Images.Id" type="hidden">-->
+            <input name="Images_Id" type="number" readonly value="<?php echo $imageId ?>">
+            Image Name:
+            <label title="Image Name:"/>
+            <input name="Images_imageName" type="text" readonly value="<?php echo $_POST['Images_imageName'] ?>"> <br/>
+            Image Url:
+            <label title="Image Url"/>
+            <input name="Images_url" type="text" readonly value="<?php echo $_POST['Images_url'] ?>"> <br/>
+            Content Name:
+            <label title="Section Name:"/>
+            <input name="Text_sectionName" type="text" required maxlength="20" value=""> <br/>
+            Text Content:
+            <label title="Content"/>
+            <input name="Text_content" type="text" required value=""> <br/>
+            <input type="submit" value="Add Related Text">
+        </form>
+        <?php
+    } else {
+        echo 'Sorry, there was a problem adding the image';
+        ?>
+        <a href="CMSHome.php">
+            Go back to Home
+        </a>
+        <?php
+    }
 }
 
 function addText(string $sectionName, int $pageId, string $content) : bool {
@@ -104,3 +108,9 @@ function addImage(string $imageName, int $pageId, string $url) : int {
 
     return $result;
 }
+
+?>
+</body>
+</html>
+
+

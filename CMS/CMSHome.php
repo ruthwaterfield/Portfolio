@@ -1,4 +1,3 @@
-<?php require_once('CMSHomeAdd.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,29 +8,32 @@
 <h1> Home</h1>
 
 <?php
-$_GET['pageId'] = 1;
+session_start();
+
+$_SESSION['pageId'] = 1;
+echo 'page id: ' . $_SESSION['pageId'] . '<br/> <br/>';
 ?>
 
-<form name="AddText" method="POST" action="CMSHomeAdd.php">
+<form method="POST" action="CMSAdd.php">
     Content Name:
     <label title="Section Name:"/>
-    <input name="Text.sectionName" type="text" required maxlength="20" value=""> <br/>
+    <input name="Text_sectionName" type="text" required maxlength="20" value=""> <br/>
     Text Content:
     <label title="Content"/>
-    <input name="Text.content" type="text" required value=""> <br/>
+    <input name="Text_content" type="text" required value=""> <br/>
     <input type="submit" value="Add">
 </form>
 
 <br/>
 <br/>
 
-<form name="AddImage" method="POST" action="CMSHomeAdd.php">
+<form method="POST" action="CMSAdd.php">
     Image Name:
     <label title="Image Name:"/>
-    <input name="Images.imageName" type="text" required maxlength="20" value=""> <br/>
+    <input name="Images_imageName" type="text" required maxlength="20" value=""> <br/>
     Image Url:
     <label title="Image Url"/>
-    <input name="Images.url" type="text" required value=""> <br/>
+    <input name="Images_url" type="text" required value=""> <br/>
     <input type="submit" value="Add">
 </form>
 
