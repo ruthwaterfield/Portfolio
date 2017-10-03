@@ -1,3 +1,4 @@
+<?php require_once ('CMSNavigation.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,12 +15,12 @@ if (isset($_POST['RelatedText_sectionName']) && isset($_SESSION['pageId']) && is
 if (addRelatedText($_POST['RelatedText_sectionName'], $_SESSION['pageId'], $_POST['RelatedText_content'], $_POST['Images_id'])) {
     ?>
     <p>Successfully added :-)</p>
-    <a href="CMSHome.php">
+    <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
         Go back to Home
     </a>
 <?php } else { ?>
 <p>'Sorry, there was a problem adding the image';
-    <a href="CMSHome.php">
+    <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
         Go back to Home
     </a>
 <?php }

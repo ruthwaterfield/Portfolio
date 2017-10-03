@@ -1,3 +1,4 @@
+<?php require_once ('CMSNavigation.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,22 +10,22 @@
 <nav>
     <ul>
         <li>
-            <a href="CMSHome.php">
+            <a href="<?php echo getCMSPageUrlFromPageName('Home')?>">
                 HOME
             </a>
         </li>
         <li>
-            <a href="CMSAboutMe.php">
+            <a href="<?php echo getCMSPageUrlFromPageName('AboutMe')?>">
                 ABOUT ME
             </a>
         </li>
         <li>
-            <a href="CMSPortfolio.php">
+            <a href="<?php echo getCMSPageUrlFromPageName('Portfolio')?>">
                 PORTFOLIO
             </a>
         </li>
         <li>
-            <a href="CMSContactMe.php">
+            <a href="<?php echo getCMSPageUrlFromPageName('ContactMe')?>">
                 CONTACT ME
             </a>
         </li>

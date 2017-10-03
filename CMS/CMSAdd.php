@@ -1,3 +1,4 @@
+<?php require_once ('CMSNavigation.php'); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,16 +11,34 @@
 session_start();
 echo $_SESSION['pageId'];
 
+try {
+    $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
+    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+    $sql = "SELECT `name` FROM `Pages` WHERE `id` = :pageId;";
+    $query = $db->prepare($sql);
+
+    $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
+
+    $query->execute();
+    $result = 1;
+} catch (Exception $e) {
+    echo $e->getMessage();
+    $result = 0;
+}
+
+
 //If the text form has been submitted, run the queries to add that text to the database.
 if(isset($_POST['Text_sectionName']) && isset($_SESSION['pageId']) && isset($_POST['Text_content'])) {
     if (addText($_POST['Text_sectionName'], $_SESSION['pageId'], $_POST['Text_content'])) { ?>
         <p>Successfully added :-)</p>
-        <a href="CMSHome.php">
+        <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
             Go back to Home
         </a> <?php
     } else { ?>
         <p>Sorry, there was a problem adding the text'</p>
-        <a href="CMSHome.php">
+        <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
             Go back to Home
         </a>
 <?php
@@ -33,7 +52,7 @@ if(isset($_POST['Images_imageName']) && isset($_SESSION['pageId']) && isset($_PO
     if ($imageId > 0) { ?>
         <h2>Successfully added :-) <br/>
             You can now return to Home or add some text related to the image you just added.</h2>
-        <a href="CMSHome.php">
+        <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
             Go back to Home
         </a>
         <br/> <br/>
@@ -61,7 +80,7 @@ if(isset($_POST['Images_imageName']) && isset($_SESSION['pageId']) && isset($_PO
     } else {
         echo 'Sorry, there was a problem adding the image';
         ?>
-        <a href="CMSHome.php">
+        <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
             Go back to Home
         </a>
         <?php
