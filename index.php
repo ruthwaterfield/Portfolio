@@ -1,3 +1,8 @@
+<?php
+session_start();
+$_SESSION['pageId'] = 1;
+include("homeFunctions.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,7 +50,8 @@
 			<section class="upperSection">
 				<div class="blurb">
 					<h2>
-						Lorem ipsum dolor
+<!--						Lorem ipsum dolor -->
+                        <?php echo getPageText('blurb_header'); ?>
 					</h2>
 					<p>
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 

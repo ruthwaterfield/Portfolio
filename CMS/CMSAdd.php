@@ -14,7 +14,10 @@ echo $_SESSION['pageId'];
 //If the text form has been submitted, run the queries to add that text to the database.
 if(isset($_POST['Text_sectionName']) && isset($_SESSION['pageId']) && isset($_POST['Text_content'])) {
     if (addText($_POST['Text_sectionName'], $_SESSION['pageId'], $_POST['Text_content'])) {
-        header('Location: CMSHome.php');
+        echo 'Successfully added :-)'; ?>
+        <a href="CMSHome.php">
+            Go back to Home
+        </a>
     } else {
         echo 'Sorry, there was a problem adding the text'; ?>
         <a href="CMSHome.php">
