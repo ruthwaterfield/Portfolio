@@ -8,18 +8,17 @@
 
 <?php
 session_start();
-
 echo $_SESSION['pageId'];
 
 //If the text form has been submitted, run the queries to add that text to the database.
 if(isset($_POST['Text_sectionName']) && isset($_SESSION['pageId']) && isset($_POST['Text_content'])) {
-    if (addText($_POST['Text_sectionName'], $_SESSION['pageId'], $_POST['Text_content'])) {
-        echo 'Successfully added :-)'; ?>
+    if (addText($_POST['Text_sectionName'], $_SESSION['pageId'], $_POST['Text_content'])) { ?>
+        <p>Successfully added :-)</p>
         <a href="CMSHome.php">
             Go back to Home
-        </a>
-    } else {
-        echo 'Sorry, there was a problem adding the text'; ?>
+        </a> <?php
+    } else { ?>
+        <p>Sorry, there was a problem adding the text'</p>
         <a href="CMSHome.php">
             Go back to Home
         </a>
@@ -32,7 +31,8 @@ if(isset($_POST['Text_sectionName']) && isset($_SESSION['pageId']) && isset($_PO
 if(isset($_POST['Images_imageName']) && isset($_SESSION['pageId']) && isset($_POST['Images_url'])) {
     $imageId = addImage($_POST['Images_imageName'], $_SESSION['pageId'], $_POST['Images_url']);
     if ($imageId > 0) { ?>
-        <h2>You can now return to Home or add some text related to the image you just added.</h2>
+        <h2>Successfully added :-) <br/>
+            You can now return to Home or add some text related to the image you just added.</h2>
         <a href="CMSHome.php">
             Go back to Home
         </a>
@@ -51,10 +51,10 @@ if(isset($_POST['Images_imageName']) && isset($_SESSION['pageId']) && isset($_PO
             <input name="Images_url" type="text" readonly value="<?php echo $_POST['Images_url'] ?>"> <br/>
             Content Name:
             <label title="Section Name:"/>
-            <input name="Text_sectionName" type="text" required maxlength="20" value=""> <br/>
+            <input name="RelatedText_sectionName" type="text" required maxlength="20" value=""> <br/>
             Text Content:
             <label title="Content"/>
-            <input name="Text_content" type="text" required value=""> <br/>
+            <input name="RelatedText_content" type="text" required value=""> <br/>
             <input type="submit" value="Add related text">
         </form>
         <?php

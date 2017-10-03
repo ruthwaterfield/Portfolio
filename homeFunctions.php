@@ -1,6 +1,13 @@
 <?php
 session_start();
 
+/**
+ * getPageText looks up text using the section name and page id and returns the content as long as it has not been deleted.
+ *
+ * @param string $sectionName The name to look for. (unique)
+ *
+ * @return string The text to be output to the webpage (if failure it is blank)
+ */
 function getPageText(string $sectionName) : string {
     $result = '';
     try {
@@ -31,6 +38,13 @@ function getPageText(string $sectionName) : string {
     return $result;
 }
 
+/**
+ * getPageImage looks up an image url using the image name and page id and returns the url as long as it has not been deleted.
+ *
+ * @param string $imageName The name to look for. (unique)
+ *
+ * @return string The image url to use.
+ */
 function getPageImage(string $imageName) : string {
     $result = '';
     try {
