@@ -1,61 +1,25 @@
 <?php
+
 /**
- * getCMSPageUrlFromPageId gets the url for the CMS page for the page currently being worked on
+ * getPages returns an array containing the names and ids of all pages in the website
  *
- * @param int $pageId The id of the page being worked on
- *
- * @return string The url for the CMS page
+ * @return array each row has a name field and an id field
  */
-function getCMSPageUrlFromPageId(int $pageId) : string {
-    $result = 'CMS';
+function getPages() : array {
+    $result = [];
     try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
+        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `CMSUrl` FROM `Pages` WHERE `id` = :pageId;";
+        $sql = "SELECT `id`, `name` FROM `Pages`;";
         $query = $db->prepare($sql);
 
-        $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
-
         $query->execute();
-        $returnedArray = $query->fetch();
-
-        $result = $returnedArray["CMSUrl"];
+        $result = $query->fetchAll();
     } catch (Exception $e) {
         echo $e->getMessage();
     }
-
-    return $result;
-}
-
-/**
-* getCMSPageUrlFromPageName gets the url for the CMS page for the page currently being worked on
-*
- * @param string $pageName The name of the page being worked on
-*
- * @return string The url for the CMS page
-*/
-function getCMSPageUrlFromPageName(string $pageName) : string {
-    $result = 'CMS';
-    try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        $sql = "SELECT `CMSUrl` FROM `Pages` WHERE `name` = :pageName;";
-        $query = $db->prepare($sql);
-
-        $query->bindParam(':pageName', $pageName, PDO::PARAM_STR, 11);
-
-        $query->execute();
-        $returnedArray = $query->fetch();
-
-        $result = $returnedArray["CMSUrl"];
-    } catch (Exception $e) {
-        echo $e->getMessage();
-    }
-
     return $result;
 }
 
@@ -69,7 +33,7 @@ function getCMSPageUrlFromPageName(string $pageName) : string {
 function getPageNameFromPageId(int $pageId) : string {
     $result = 'None selected';
     try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
+        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -88,5 +52,74 @@ function getPageNameFromPageId(int $pageId) : string {
 
     return $result;
 }
+
+
+
+
+
+//
+///**
+// * getCMSPageUrlFromPageId gets the url for the CMS page for the page currently being worked on
+// *
+// * @param int $pageId The id of the page being worked on
+// *
+// * @return string The url for the CMS page
+// */
+//function getCMSPageUrlFromPageId(int $pageId) : string {
+//    $result = 'CMS';
+//    try {
+//        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
+//        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+//        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//
+//        $sql = "SELECT `CMSUrl` FROM `Pages` WHERE `id` = :pageId;";
+//        $query = $db->prepare($sql);
+//
+//        $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
+//
+//        $query->execute();
+//        $returnedArray = $query->fetch();
+//
+//        $result = $returnedArray["CMSUrl"];
+//    } catch (Exception $e) {
+//        echo $e->getMessage();
+//    }
+//
+//    return $result;
+//}
+//
+///**
+//* getCMSPageUrlFromPageName gets the url for the CMS page for the page currently being worked on
+//*
+// * @param string $pageName The name of the page being worked on
+//*
+// * @return string The url for the CMS page
+//*/
+//function getCMSPageUrlFromPageName(string $pageName) : string {
+//    $result = 'CMS';
+//    try {
+//        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
+//        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+//        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+//
+//        $sql = "SELECT `CMSUrl` FROM `Pages` WHERE `name` = :pageName;";
+//        $query = $db->prepare($sql);
+//
+//        $query->bindParam(':pageName', $pageName, PDO::PARAM_STR, 11);
+//
+//        $query->execute();
+//        $returnedArray = $query->fetch();
+//
+//        $result = $returnedArray["CMSUrl"];
+//    } catch (Exception $e) {
+//        echo $e->getMessage();
+//    }
+//
+//    return $result;
+//}
+
+
+
+
 
 ?>
