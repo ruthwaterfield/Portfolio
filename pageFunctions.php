@@ -14,7 +14,7 @@ function getPageText(string $sectionName) : string {
         if(isset($_SESSION['pageId'])) {
             $pageId = $_SESSION['pageId'];
 
-            $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
+            $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
             $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
@@ -51,7 +51,7 @@ function getPageImage(string $imageName) : string {
         if(isset($_SESSION['pageId'])) {
             $pageId = $_SESSION['pageId'];
 
-            $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
+            $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
             $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 

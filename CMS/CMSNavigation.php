@@ -12,7 +12,7 @@ function getPages() : array {
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `id`, `name` FROM `Pages`;";
+        $sql = "SELECT `id`, `name` FROM `Pages` ORDER BY `id`;";
         $query = $db->prepare($sql);
 
         $query->execute();
