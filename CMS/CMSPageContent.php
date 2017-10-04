@@ -1,4 +1,5 @@
 <?php require_once ('CMSNavigation.php');
+require_once ('CMSPageContentFunctions.php');
 
 session_start();
 
@@ -30,31 +31,58 @@ else
         Add content
     </a>
 
-
-
-
 <div>
-<h3>Edd/Delete existing content</h3>
+
+<h3>Existing content</h3>
+    <div>
+
+        <?php
+        $pageContentsArray = getContentForPage($_SESSION['pageId']);
+        foreach ($pageContentsArray as $contentItem) { ?>
+            <div>
+            <p>
+                Text Label: <?php echo $contentItem['textLabel']?>
+            </p>
+            <p>
+                Text Content: <?php echo $contentItem['textContent']?>
+            </p>
+                <?php if (contentHasImage($contentItem['imageLabel'], $contentItem['imageUrl'])) { ?>
+                    <p>
+                        Image Label: <?php echo $contentItem['imageLabel']?>
+                    </p>
+                    <p>
+                        Image Url: <?php echo $contentItem['imageUrl']?>
+                    </p>
+
+                <?php } ?>
+
+                <a href="CMSEditContentForm.php?id=<?php echo $contentItem['id'];?>">
+                    Edit/Delete this item
+                </a>
+            </div>
+        <?php
+        }
+        ?>
 
 <?php
-$fruits = ['lemon' => 101, 'apple' => 102, 'pear' => 103];
-foreach ($fruits as $fruit => $val) {
-?>
-    <div>
-        <h5>Another Fruit</h5>
-        <p>
-           <?php echo $fruit; ?>
-        </p>
-        <p>
-            <?php echo $val; ?>
-        </p>
-        <a href="CMSEdit.php?id=<?php echo $fruit; ?>">
-            Edit this fruit
-        </a>
-    </div>
-    <?php
-}
-?>
+//$fruits = ['lemon' => 101, 'apple' => 102, 'pear' => 103];
+//foreach ($fruits as $fruit => $val) {
+//?>
+<!--    <div>-->
+<!--        <h5>Another Fruit</h5>-->
+<!--        <p>-->
+<!--           --><?php //echo $fruit; ?>
+<!--        </p>-->
+<!--        <p>-->
+<!--            --><?php //echo $val; ?>
+<!--        </p>-->
+<!--        <a href="CMSEdit.php?id=--><?php //echo $fruit; ?><!--">-->
+<!--            Edit this fruit-->
+<!--        </a>-->
+<!--    </div>-->
+<!--    --><?php
+//}
+//?>
 
 </div>
 
