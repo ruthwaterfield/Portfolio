@@ -20,26 +20,21 @@ if(!isset($_SESSION['pageId'])) {
 
 <div>
     <form method="POST" action="CMSChangeOccurred.php">
-        Content Name:
-        <label title="Section Name:"/>
-        <input name="Text_sectionName" type="text" required maxlength="20" value=""> <br/>
-        Text Content:
-        <label title="Content"/>
-        <input name="Text_content" type="text" required value=""> <br/>
-        <input type="submit" value="Add">
-    </form>
-
-    <br/>
-    <br/>
-
-    <form method="POST" action="CMSAdd.php">
-        Image Name:
-        <label title="Image Name:"/>
-        <input name="Images_imageName" type="text" required maxlength="20" value=""> <br/>
-        Image Url:
-        <label title="Image Url"/>
-        <input name="Images_url" type="text" required value=""> <br/>
-        <input type="submit" value="Add">
+        <input name="action" type="hidden" value="add">
+        <input name="pageId" type="hidden" value=<?php echo $_SESSION['pageId']?>>
+        Text label:
+        <label title="Text label:"/>
+        <input name="textLabel" type="text" required maxlength="20"> <br/>
+        Text content:
+        <label title="Text content"/>
+        <input name="textContent" type="text" required> <br/>
+        (Optional) Image label:
+        <label title="Image label:"/>
+        <input name="imageLabel" type="text" maxlength="20"> <br/>
+        (Optional) Image url:
+        <label title="Image url"/>
+        <input name="imageUrl" type="text" maxlength="30"> <br/>
+        <input type="submit" value="Add content">
     </form>
 
 </div>

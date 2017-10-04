@@ -6,6 +6,9 @@ if(isset($_GET['pageId']))
 {
     $_SESSION['pageId'] = $_GET['pageId'];
 }
+else if(isset($_SESSION['pageId'])) {
+    //page already chosen
+}
 else
 {
     header('Location: CMSChoosePage.php');
@@ -22,7 +25,11 @@ else
 <h1> Page content: <?php echo getPageNameFromPageId($_SESSION['pageId'])?></h1>
 
 <div>
-<h3>Add content</h3>
+
+    <a href="CMSAddContentForm.php">
+        Add content
+    </a>
+
 
 
 
