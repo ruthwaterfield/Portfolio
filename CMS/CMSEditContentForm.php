@@ -23,9 +23,7 @@ if(!isset($_GET['id'])) {
     header('Location: CMSPageContent.php');
 }
 
-$contentArray = getContentWithId($_GET['id']);
-var_dump($contentArray);
-var_dump($contentArray['textContent']);?>
+$contentArray = getContentWithId($_GET['id']);?>
 
 
 <div>

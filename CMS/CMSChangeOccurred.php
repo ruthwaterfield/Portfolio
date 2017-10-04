@@ -43,8 +43,6 @@ if (isset($_POST['action'])) {
 
         case "edit" :
             if(isValidEditContentFormSubmission()) {
-                echo 'here';
-                var_dump($_POST);
                 if (editContentWithId($_POST['textLabel'], $_POST['textContent'], $_POST['imageLabel'], $_POST['imageUrl'], $_POST['id'])) {
                     echo "Successfully edited :-) </br>";
                     ?>
@@ -63,23 +61,23 @@ if (isset($_POST['action'])) {
             }
             break;
         case "delete" :
-//            if(isValidAddContentFormSubmission()) {
-//                if (addContentToPage($_POST['textLabel'], $_POST['textContent'], $_POST['imageLabel'], $_POST['imageUrl'], $_POST['pageId'])) {
-//                    echo "Successfully deleted :-) </br>";
-//                    ?>
-<!--                    <a href="CMSPageContent.php">-->
-<!--                        Go back to page content for: --><?php //echo getPageNameFromPageId($_SESSION['pageId'])?>
-<!--                    </a>-->
-<!--                    --><?php
-//                } else {
-//                    echo "Something went wrong :-( </br>";
-//                    ?>
-<!--                    <a href="CMSPageContent.php">-->
-<!--                        Go back to page content for: --><?php //echo getPageNameFromPageId($_SESSION['pageId'])?>
-<!--                    </a>-->
-<!--                    --><?php
-//                }
-//            }
+            if(isValidDeleteContentFormSubmission()) {
+                if (markContentAsDeleted($_POST['id'])) {
+                    echo "Successfully deleted :-) </br>";
+                    ?>
+                    <a href="CMSPageContent.php">
+                        Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>
+                    </a>
+                    <?php
+                } else {
+                    echo "Something went wrong :-( </br>";
+                    ?>
+                    <a href="CMSPageContent.php">
+                        Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>
+                    </a>
+                    <?php
+                }
+            }
             break;
         default :
             header('Location: CMSPageContent.php');
@@ -107,6 +105,19 @@ function isValidAddContentFormSubmission() : bool {
 function isValidEditContentFormSubmission() : bool {
     $result = 0;
     if (isset($_POST['textLabel']) && isset($_POST['textContent']) && isset($_POST['imageLabel']) && isset($_POST['imageUrl']) && isset($_POST['id'])){
+        $result = 1;
+    }
+    return $result;
+}
+
+/**
+ * isValidDeleteContentFormSubmission checks whether the post data has been set correctly before it is used for editing content.
+ *
+ * @return bool Success (1) or failure (0)
+ */
+function isValidDeleteContentFormSubmission() : bool {
+    $result = 0;
+    if (isset($_POST['id'])){
         $result = 1;
     }
     return $result;

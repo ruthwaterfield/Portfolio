@@ -26,6 +26,12 @@ else
 <h1> Page content: <?php echo getPageNameFromPageId($_SESSION['pageId'])?></h1>
 
 <div>
+<a href="CMSChoosePage.php">
+    Choose a different page
+</a>
+</div>
+
+<div>
 
     <a href="CMSAddContentForm.php">
         Add content
