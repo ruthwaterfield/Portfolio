@@ -63,6 +63,8 @@ $contentArray = getContentWithId($_GET['id']);?>
         <input type="submit" value="Delete this content">
     </form>
 
+    <br/>
+
     <a href="CMSPageContent.php">
         Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?> without changing anything
     </a>

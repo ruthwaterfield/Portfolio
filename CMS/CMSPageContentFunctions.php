@@ -7,9 +7,10 @@ function getContentForPage(int $pageId) : array {
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageUrl` FROM `Content` WHERE `deleted` = 0 ORDER BY `id`;";
+        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageUrl` FROM `Content` WHERE `deleted` = 0 AND `pageId` = :pageId ORDER BY `id`;";
         $query = $db->prepare($sql);
 
+        $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
         $query->execute();
         $result = $query->fetchAll();
     } catch (Exception $e) {

@@ -37,6 +37,8 @@ if(!isset($_SESSION['pageId'])) {
         <input type="submit" value="Add content">
     </form>
 
+    <br/>
+
     <a href="CMSPageContent.php">
         Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?> without changing anything
     </a>
