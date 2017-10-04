@@ -10,7 +10,7 @@
 <?php
 session_start();
 if(isset($_SESSION['pageId'])) {
-    echo 'You are working on the' . getPageNameFromPageId($_SESSION['pageId']) . ' page.<br/>';
+    echo 'You are working on the ' . getPageNameFromPageId($_SESSION['pageId']) . ' page.<br/>';
 }
 
 if (isset($_POST['RelatedText_sectionName']) && isset($_SESSION['pageId']) && isset($_POST['RelatedText_content']) && isset($_POST['Images_id'])) {
@@ -18,12 +18,12 @@ if (addRelatedText($_POST['RelatedText_sectionName'], $_SESSION['pageId'], $_POS
     ?>
     <p>Successfully added :-)</p>
     <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
-        Go back to Home
+        Go back to <?php echo getPageNameFromPageId($_SESSION['pageId']); ?> page
     </a>
 <?php } else { ?>
 <p>'Sorry, there was a problem adding the image';
     <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
-        Go back to Home
+        Go back to <?php echo getPageNameFromPageId($_SESSION['pageId']); ?> page
     </a>
 <?php }
 }

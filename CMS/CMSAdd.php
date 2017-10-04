@@ -10,7 +10,7 @@
 <?php
 session_start();
 if(isset($_SESSION['pageId'])) {
-    echo 'You are working on the' . getPageNameFromPageId($_SESSION['pageId']) . ' page.<br/>';
+    echo 'You are working on the ' . getPageNameFromPageId($_SESSION['pageId']) . ' page.<br/>';
 }
 
 
@@ -19,12 +19,12 @@ if(isset($_POST['Text_sectionName']) && isset($_SESSION['pageId']) && isset($_PO
     if (addText($_POST['Text_sectionName'], $_SESSION['pageId'], $_POST['Text_content'])) { ?>
         <p>Successfully added :-)</p>
         <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
-            Go back to Home
+            Go back to <?php echo getPageNameFromPageId($_SESSION['pageId']); ?> page
         </a> <?php
     } else { ?>
         <p>Sorry, there was a problem adding the text'</p>
         <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
-            Go back to Home
+            Go back to <?php echo getPageNameFromPageId($_SESSION['pageId']); ?> page
         </a>
 <?php
     }
@@ -38,7 +38,7 @@ if(isset($_POST['Images_imageName']) && isset($_SESSION['pageId']) && isset($_PO
         <h2>Successfully added :-) <br/>
             You can now return to Home or add some text related to the image you just added.</h2>
         <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
-            Go back to Home
+            Go back to <?php echo getPageNameFromPageId($_SESSION['pageId']); ?> page
         </a>
         <br/> <br/>
         <h3>Add related text:</h3>
@@ -66,7 +66,7 @@ if(isset($_POST['Images_imageName']) && isset($_SESSION['pageId']) && isset($_PO
         echo 'Sorry, there was a problem adding the image';
         ?>
         <a href="<?php echo getCMSPageUrlFromPageId($_SESSION['pageId'])?>">
-            Go back to Home
+            Go back to <?php echo getPageNameFromPageId($_SESSION['pageId']); ?> page
         </a>
         <?php
     }
