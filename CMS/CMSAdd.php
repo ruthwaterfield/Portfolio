@@ -9,23 +9,8 @@
 
 <?php
 session_start();
-echo $_SESSION['pageId'];
-
-try {
-    $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteDb', 'root', '');
-    $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    $sql = "SELECT `name` FROM `Pages` WHERE `id` = :pageId;";
-    $query = $db->prepare($sql);
-
-    $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
-
-    $query->execute();
-    $result = 1;
-} catch (Exception $e) {
-    echo $e->getMessage();
-    $result = 0;
+if(isset($_SESSION['pageId'])) {
+    echo 'You are working on the' . getPageNameFromPageId($_SESSION['pageId']) . ' page.<br/>';
 }
 
 

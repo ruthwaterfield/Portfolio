@@ -9,7 +9,9 @@
 
 <?php
 session_start();
-echo $_SESSION['pageId'];
+if(isset($_SESSION['pageId'])) {
+    echo 'You are working on the' . getPageNameFromPageId($_SESSION['pageId']) . ' page.<br/>';
+}
 
 if (isset($_POST['RelatedText_sectionName']) && isset($_SESSION['pageId']) && isset($_POST['RelatedText_content']) && isset($_POST['Images_id'])) {
 if (addRelatedText($_POST['RelatedText_sectionName'], $_SESSION['pageId'], $_POST['RelatedText_content'], $_POST['Images_id'])) {
