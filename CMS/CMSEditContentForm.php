@@ -1,7 +1,6 @@
 <?php
 require_once ('CMSNavigation.php');
 require_once ('CMSPageContentFunctions.php');
-require_once ('CMSEditContentFunctions.php');
 
 session_start();
 
@@ -24,27 +23,30 @@ if(!isset($_GET['id'])) {
     header('Location: CMSPageContent.php');
 }
 
-$contentArray = getContentWithId($_GET['id']); ?>
+$contentArray = getContentWithId($_GET['id']);
+var_dump($contentArray);
+var_dump($contentArray['textContent']);?>
+
 
 <div>
     <form method="POST" action="CMSChangeOccurred.php">
         <input name="action" type="hidden" value="edit">
-        <input name="pageId" type="hidden" value=<?php echo $_SESSION['pageId']?>>
-        <input name="id" type="hidden" value=<?php echo $contentArray['id']?> >
+        <input name="pageId" type="hidden" value="<?php echo $_SESSION['pageId']?>">
+        <input name="id" type="hidden" value="<?php echo $contentArray['id']?>" >
         Text label:
         <label title="Text label:"/>
-        <input name="textLabel" type="text" required maxlength="20" value=<?php echo $contentArray['textLabel']?>> <br/>
+        <input name="textLabel" type="text" required maxlength="20" value="<?php echo $contentArray['textLabel']?>"> <br/>
         Text content:
         <label title="Text content"/>
-        <input name="textContent" type="text" required value=<?php echo $contentArray['textContent']?>> <br/>
+        <input name="textContent" type="text" required value="<?php echo $contentArray['textContent']?>"> <br/>
 
 <?php if (contentHasImage($contentArray['imageLabel'], $contentArray['imageUrl'])) { ?>
     (Optional) Image label:
     <label title="Image label:"/>
-    <input name="imageLabel" type="text" maxlength="20" value=<?php echo $contentArray['imageLabel']?>> <br/>
+    <input name="imageLabel" type="text" maxlength="20" value="<?php echo $contentArray['imageLabel']?>"> <br/>
     (Optional) Image url:
     <label title="Image url"/>
-    <input name="imageUrl" type="text" maxlength="30" value=<?php echo $contentArray['imageUrl']?>> <br/>
+    <input name="imageUrl" type="text" maxlength="30" value="<?php echo $contentArray['imageUrl']?>"> <br/>
     <?php } else { ?>
         (Optional) Image label:
         <label title="Image label:"/>
@@ -59,7 +61,7 @@ $contentArray = getContentWithId($_GET['id']); ?>
 
     <form method="POST" action="CMSChangeOccurred.php">
         <input name="action" type="hidden" value="delete">
-        <input name="id" type="hidden" value="<?php echo $contentArray['id']?>"
+        <input name="id" type="hidden" value=<?php echo $contentArray['id']?>>
         <input type="submit" value="Delete this content">
     </form>
 

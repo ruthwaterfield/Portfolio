@@ -35,11 +35,14 @@ function getContentWithId(int $id) : array {
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `textLabel`, `textContent`, `imageLabel`, `imageUrl` FROM `Content` WHERE `deleted` = 0;";
+        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageUrl` FROM `Content` WHERE `id` = :id;";
         $query = $db->prepare($sql);
+
+        $query->bindParam(':id', $id, PDO::PARAM_INT, 11);
 
         $query->execute();
         $result = $query->fetch();
+//        var_dump($result);
     } catch (Exception $e) {
         echo $e->getMessage();
     }
