@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require ("../CMS/CMSPageContentFunctions.php");
+require ("../CMS/CMSAddContentFunctions.php");
 
 class StackTest extends TestCase
 {
