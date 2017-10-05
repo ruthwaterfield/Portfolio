@@ -15,38 +15,50 @@ if(!isset($_SESSION['pageId'])) {
 <html lang="en">
 <head>
     <title>Add content to: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>  </title>
+    <link rel="stylesheet" type="text/css" href="../CMSStyles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../CMSStyles/CMSTheme.css">
 </head>
 
 <body>
-<h1> Add content to: <?php echo getPageNameFromPageId($_SESSION['pageId'])?></h1>
 
-<form action="CMSLogIn.php" method="POST">
-    <input type="submit" name="logOut" value="LOG OUT">
-</form>
+<header>
+    <h1> Add content to: <?php echo getPageNameFromPageId($_SESSION['pageId'])?></h1>
 
-<div>
+    <form action="CMSLogIn.php" method="POST">
+        <input type="submit" name="logOut" value="Log out">
+    </form>
+
+    <a href="CMSChoosePage.php">
+        Choose a different page
+    </a>
+</header>
+
+<div class="mainContent">
+    <a href="CMSPageContent.php">
+        Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?> without changing anything
+    </a>
+
     <form method="POST" action="CMSChangeOccurred.php">
         <input name="action" type="hidden" value="add">
         <input name="pageId" type="hidden" value="<?php echo $_SESSION['pageId']?>">
-        Text label:
-        <label title="Text label:"/>
+        <p>Text label: </p>
+        <label about="Text label:"/>
         <input name="textLabel" type="text" required maxlength="20"> <br/>
-        Text content:
-        <label title="Text content"/>
-        <input name="textContent" type="text" required> <br/>
-        (Optional) Image label:
-        <label title="Image label:"/>
+        <p>Text content:</p>
+        <label about="Text content"/>
+        <textarea name="textContent" rows="3" required>
+        </textarea>  <br/>
+        <p>(Optional) Image label: </p>
+        <label about="Image label:"/>
         <input name="imageLabel" type="text" maxlength="20"> <br/>
-        (Optional) Image location:
-        <label title="Image location"/>
+        <p>(Optional) Image location: </p>
+        <label about="Image location"/>
         <input name="imageLocation" type="text"> <br/>
         <input type="submit" value="Add content">
     </form>
 
     <br/>
 
-    <a href="CMSPageContent.php">
-        Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?> without changing anything
-    </a>
+
 
 </div>

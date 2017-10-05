@@ -11,10 +11,10 @@ body {
     font-family: simplifica, Helvetica, sans-serif;
     margin: 0;
     background-color: #23408F;
+    letter-spacing: 1.2px;
 }
 
 p {
-    letter-spacing: 1.2px;
     color: #23408F;
     font-size: 1.1rem;
 }
@@ -26,6 +26,55 @@ a {
     padding: 5px;
     font-size: 1.3rem;
 }
+
+form {
+    margin: 5px;
+    margin-top: 15px;
+    background-color: #D7EBFE;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    color: #23408F;
+}
+
+form input {
+    margin: 3px;
+}
+
+form input[type=submit] {
+    background-color: #75CABE;
+    text-decoration: none;
+    padding: 5px;
+    font-size: 1.1rem;
+    border: none;
+    font-family: simplifica, Helvetica, sans-serif;
+    letter-spacing: 1.2px;
+    cursor: -webkit-grab;
+}
+
+form input[type=text], textarea {
+    background-color: #FFF9DB;
+    color: #23408F;
+    font-family: simplifica, Helvetica, sans-serif;
+    letter-spacing: 1.2px;
+    font-size: 1.1rem;
+    width: 80%;
+    text-wrap: normal;
+    text-indent: 0px;
+
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+form p {
+    vertical-align: middle;
+    margin: auto;
+    width: 15%;
+    display: inline-block;
+}
+
 header {
     width: 100%;
     background-color: #75CABE;
@@ -51,16 +100,13 @@ header form {
     padding: 0;
 }
 
-header form input {
+header form input[type=submit] {
+    margin: 0px;
+    border: solid;
     border-color: #23408F;
     border-width: 2px;
-    background: none;
     color: #23408F;
-    text-decoration: none;
-    cursor: -webkit-grab;
-    padding: 5px;
     font-size: 1.8rem;
-    font-family: simplifica, Helvetica, sans-serif;
 }
 
 header a {
@@ -105,3 +151,4 @@ header a {
     background-color: #23408F;
     height: 1.5px;
 }
+

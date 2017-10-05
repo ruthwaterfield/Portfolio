@@ -49,12 +49,14 @@ if (isset($_GET['pageId'])) {
             <p class="content">
                 <?php echo $contentItem['textLabel'] ?>
             </p>
+            <br/>
             <p class="label">
                 Text content:
             </p>
             <p class="content">
                 <?php echo $contentItem['textContent'] ?>
             </p>
+            <br/>
             <?php if (contentHasImage($contentItem['imageLabel'], $contentItem['imageLocation'])) { ?>
                 <p class="label">
                     Image label:
@@ -62,12 +64,14 @@ if (isset($_GET['pageId'])) {
                 <p class="content">
                     <?php echo $contentItem['imageLabel'] ?>
                 </p>
+                <br/>
                 <p class="label">
                     Image location:
                 </p>
                 <p class="content">
                     <?php echo $contentItem['imageLocation'] ?>
                 </p>
+                <br/>
             <?php } ?>
 
             <div class="divider">
