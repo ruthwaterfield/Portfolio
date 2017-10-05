@@ -9,22 +9,32 @@ header('Location: index.php');
 <html lang="en">
 <head>
     <title> Choose page </title>
+    <link rel="stylesheet" type="text/css" href="../CMSStyles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../CMSStyles/CMSTheme.css">
+
 </head>
 
-<h1> Choose page to edit: </h1>
+<header>
+    <h1> Choose page to edit: </h1>
 
-<form action="CMSLogIn.php" method="POST">
-    <input type="submit" name="logOut" value="LOG OUT">
-</form>
+    <form action="CMSLogIn.php" method="POST">
+        <input type="submit" name="logOut" value="Log out">
+    </form>
 
-<nav>
+</header>
+
+<div class="mainContent">
+
     <?php $pageArray = getPages();
-        echo '</br>';
         foreach ($pageArray as $page) { ?>
+            <div class="pageChooser">
             <a href="CMSPageContent.php?pageId=<?php echo $page['id'];?>">
-                <?php echo $page['name'] . '<br/>';?>
+                <?php echo $page['name'];?>
             </a>
+            </div>
     <?php } ?>
 
+
+</div>
 </html>
 

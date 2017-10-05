@@ -52,16 +52,17 @@ form input[type=submit] {
     cursor: -webkit-grab;
 }
 
-form input[type=text], textarea {
+form input[type=text], input[type=password], textarea {
     background-color: #FFF9DB;
     color: #23408F;
     font-family: simplifica, Helvetica, sans-serif;
     letter-spacing: 1.2px;
     font-size: 1.1rem;
     width: 80%;
-    text-wrap: normal;
-    text-indent: 0px;
+}
 
+form textarea {
+    margin: 2px;
 }
 
 textarea:focus, input:focus{
@@ -152,3 +153,11 @@ header a {
     height: 1.5px;
 }
 
+.pageChooser {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.pageChooser a {
+    font-size: 3rem;
+}

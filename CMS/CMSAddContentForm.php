@@ -46,8 +46,7 @@ if(!isset($_SESSION['pageId'])) {
         <input name="textLabel" type="text" required maxlength="20"> <br/>
         <p>Text content:</p>
         <label about="Text content"/>
-        <textarea name="textContent" rows="3" required>
-        </textarea>  <br/>
+        <textarea name="textContent" rows="3" required></textarea>  <br/>
         <p>(Optional) Image label: </p>
         <label about="Image label:"/>
         <input name="imageLabel" type="text" maxlength="20"> <br/>

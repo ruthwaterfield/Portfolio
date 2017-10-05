@@ -10,24 +10,29 @@ if ($_SESSION['loggedIn'] == 1) {
 <html lang="en">
 <head>
     <title>Log in to CMS</title>
+    <link rel="stylesheet" type="text/css" href="../CMSStyles/normalize.css">
+    <link rel="stylesheet" type="text/css" href="../CMSStyles/CMSTheme.css">
 </head>
 <body>
 
-<h1>
-    Log in
-</h1>
-<h2>
-    Please enter your username and password and click LOG IN
-</h2>
+<header>
+    <h1>Log in</h1>
+</header>
+
+<div class="mainContent">
+
 <form action="CMSLogIn.php" method="POST">
-    Username:
-    <input name="username" type="text" value="">
-    Password:
-    <input name="password" type="password" value="">
-    <input name="login" type="submit" value="LOG IN">
+    <h2>
+        Please enter your username and password and click Log in:
+    </h2>
+    <p>Username:</p>
+    <input name="username" type="text" value=""> <br/>
+    <p>Password:</p>
+    <input name="password" type="password" value=""> <br/>
+    <input name="login" type="submit" value="Log in">
 </form>
 
-
+</div>
 
 </body>
 </html>
