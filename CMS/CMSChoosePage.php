@@ -10,7 +10,6 @@
 
 <nav>
     <?php $pageArray = getPages();
-        //var_dump($pageArray);
         echo '</br>';
         foreach ($pageArray as $page) { ?>
             <a href="CMSPageContent.php?pageId=<?php echo $page['id'];?>">

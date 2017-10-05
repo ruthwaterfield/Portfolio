@@ -1,8 +1,9 @@
 <?php
+require_once ('navigation.php');
+require_once ("CMS/CMSPageContentFunctions.php");
+
 session_start();
 $_SESSION['pageId'] = 1;
-require_once('Navigation.php');
-include_once ("CMS/CMSPageContentFunctions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,26 +22,14 @@ include_once ("CMS/CMSPageContentFunctions.php");
 		</h1>
 		<nav>
 			<ul>
-				<li>
-					<a href="<?php echo getPageUrlFromPageName('Home');?>">
-						HOME
-					</a>
-				</li>
-				<li>
-                    <a href="<?php echo getPageUrlFromPageName('AboutMe');?>">
-						ABOUT ME
-					</a>
-				</li>
-				<li>
-                    <a href="<?php echo getPageUrlFromPageName('Portfolio');?>">
-						PORTFOLIO
-					</a>
-				</li>
-				<li>
-					<<a href="<?php echo getPageUrlFromPageName('ContactMe');?>">
-						CONTACT ME
-					</a>
-				</li>
+                <?php $pageArray = getPages();
+                foreach ($pageArray as $page) { ?>
+                    <li>
+                        <a href="<?php echo $page['url'];?>">
+                            <?php echo strtoupper($page['name']);?>
+                        </a>
+                    </li>
+                <?php } ?>
 			</ul>
 		</nav>
 	</header>
@@ -57,9 +46,9 @@ include_once ("CMS/CMSPageContentFunctions.php");
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
 					</p>
 					<div class="link">
-						<a href="aboutMe.html">
-							ABOUT ME
-						</a>
+                        <a href="<?php echo getPageUrlForPageId(2);?>">
+                            <?php echo strtoupper(getPageNameForPageId(2));?>
+                        </a>
 					</div>
 				</div>
 			</section>
