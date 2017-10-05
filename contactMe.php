@@ -37,28 +37,18 @@ include_once ("CMS/CMSPageContentFunctions.php");
 		<div class= "central">
 		
 			<section class="content">
-				<div class="contactItem">
-					<img src="Images/phone-2048157_1920.png">
-					<p>
-						01234 567890
-					</p>
-				</div>
-				<div class="contactItem">
-					<img src="Images/mail-2048128_1920.png">
-					<p>
-						email.address@gmail.com
-					</p>
-				</div>
-				<div class="contactItem">
-					<img src="Images/website-2048130_1920.png">
-					<p>
-						Building name <br>
-						Address line 1 <br>
-						City <br>
-						County <br>
-						Postcode
-					</p>
-				</div>			
+                <?php
+                $contentItems = getContentForPage($_SESSION['pageId']);
+                foreach ($contentItems as $contentItem) { ?>
+                    <div class="contactItem">
+                        <?php if (contentHasImage($contentItem['imageLabel'], $contentItem['imageLocation'])) { ?>
+                            <img src="<?php echo $contentItem['imageLocation'] ?>">
+                            <?php } ?>
+                            <p>
+                                <?php echo $contentItem['textContent']; ?>
+                            </p>
+                    </div>
+                <?php } ?>
 			</section>
 		
 		</div>	

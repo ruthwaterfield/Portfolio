@@ -42,36 +42,30 @@ include_once ("CMS/CMSPageContentFunctions.php");
 						Featured
 					</h2>
 				</div>
-				<div class="infoItem">
-					<img src="Images/fractal-350105_1920.jpg" />
-					<p>
-						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-					</p>
+                <div class="infoItem">
+                    <?php $profile = getContentWithTextLabel('Featured', $_SESSION['pageId']);
+                    if(contentHasImage($profile['imageLabel'], $profile['imageLocation'])) { ?>
+                        <img src="<?php echo $profile['imageLocation']?>"/>
+                    <?php } ?>
+                    <p>
+                        <?php echo $profile['textContent']?>
+                    </p>
 				</div>
-				<div class="infoItem">
-					<img src="Images/mathematics-1509559_1920.jpg" />
-					<p>
-						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-					</p>
-				</div>
-				<div class="infoItem">
-					<img src="Images/ilya-pavlov-87438.jpg" />
-					<p>
-						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-					</p>
-				</div>
-				<div class="infoItem">
-					<img src="Images/vadim-sherbakov-68.jpg" />
-					<p>
-						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-					</p>
-				</div>
-				<div class="infoItem">
-					<img src="Images/source-code-583537_1920.jpg" />
-					<p>
-						"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-					</p>
-				</div>
+
+                <?php
+                $contentItems = getContentForPage($_SESSION['pageId']);
+                foreach ($contentItems as $contentItem) {
+                    if ($contentItem['textLabel'] != 'Featured') { //treat everything except Featured in the following way: ?>
+                            <div class="infoItem">
+                                <?php if (contentHasImage($contentItem['imageLabel'], $contentItem['imageLocation'])) { ?>
+                                    <img src="<?php echo $contentItem['imageLocation'] ?>">
+                                <?php } ?>
+                                <p>
+                                    <?php echo $contentItem['textContent']; ?>
+                                </p>
+                            </div>
+                    <?php }
+                } ?>
 			</section>
 		
 		</div>	
