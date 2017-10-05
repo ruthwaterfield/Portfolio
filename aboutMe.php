@@ -20,30 +20,18 @@ include_once ("CMS/CMSPageContentFunctions.php");
 		<h1> 
 			Ruth V Waterfield
 		</h1>
-		<nav>
-			<ul>
-				<li>
-					<a href="index.php">
-						HOME
-					</a>
-				</li>
-				<li>
-					<a href="aboutMe.php">
-						ABOUT ME
-					</a>
-				</li>
-				<li>
-					<a href="portfolio.php">
-						PORTFOLIO
-					</a>
-				</li>
-				<li>
-					<a href="contactMe.php">
-						CONTACT ME
-					</a>
-				</li>
-			</ul>
-		</nav>
+        <nav>
+            <ul>
+                <?php $pageArray = getPages();
+                foreach ($pageArray as $page) { ?>
+                    <li>
+                        <a href="<?php echo $page['url'];?>">
+                            <?php echo strtoupper($page['name']);?>
+                        </a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </nav>
 	</header>
 	
 	<article>
