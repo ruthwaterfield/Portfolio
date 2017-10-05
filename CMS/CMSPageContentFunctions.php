@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * getContentForPage returns an array of all the contents for a specified page.
+ *
+ * @param int $pageId The id of the page.
+ *
+ * @return array The contents for the page (each row is an item of content)
+ */
 function getContentForPage(int $pageId) : array {
     $result = [];
     try {
@@ -19,6 +26,14 @@ function getContentForPage(int $pageId) : array {
     return $result;
 }
 
+/**
+ * contentHasImage tests an item of content and determines whether it has an image specified.
+ *
+ * @param $imageLabel The field of the database that would contain the image label.
+ * @param $imageUrl The field of the database that would contain the image url.
+ *
+ * @return bool 1 if the content item has an image, 0 if not.
+ */
 function contentHasImage($imageLabel, $imageUrl) : bool {
     $result = 0;
     if($imageLabel != NULL || $imageUrl != NULL) {
@@ -29,6 +44,13 @@ function contentHasImage($imageLabel, $imageUrl) : bool {
     return $result;
 }
 
+/**
+ * getContentWithId find the content from the database with a specified id
+ *
+ * @param int $id The id of the content to be selected
+ *
+ * @return array The content data
+ */
 function getContentWithId(int $id) : array {
     $result = [];
     try {

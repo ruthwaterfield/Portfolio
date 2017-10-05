@@ -70,26 +70,6 @@ else
         }
         ?>
 
-<?php
-//$fruits = ['lemon' => 101, 'apple' => 102, 'pear' => 103];
-//foreach ($fruits as $fruit => $val) {
-//?>
-<!--    <div>-->
-<!--        <h5>Another Fruit</h5>-->
-<!--        <p>-->
-<!--           --><?php //echo $fruit; ?>
-<!--        </p>-->
-<!--        <p>-->
-<!--            --><?php //echo $val; ?>
-<!--        </p>-->
-<!--        <a href="CMSEdit.php?id=--><?php //echo $fruit; ?><!--">-->
-<!--            Edit this fruit-->
-<!--        </a>-->
-<!--    </div>-->
-<!--    --><?php
-//}
-//?>
-
 </div>
 
 </body>
