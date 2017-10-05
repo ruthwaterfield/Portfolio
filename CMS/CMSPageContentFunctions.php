@@ -36,7 +36,7 @@ function getContentForPage(int $pageId) : array {
  */
 function contentHasImage($imageLabel, $imageUrl) : bool {
     $result = 0;
-    if($imageLabel != NULL || $imageUrl != NULL) {
+    if($imageLabel != NULL && $imageUrl != NULL) {
         if(is_string($imageLabel) && is_string($imageUrl)) {
             $result = 1;
         }
