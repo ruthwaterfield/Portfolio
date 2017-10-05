@@ -1,0 +1,107 @@
+* {
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: simplifica;
+    src: url(SIMPLIFICATypeface.ttf);
+}
+
+body {
+    font-family: simplifica, Helvetica, sans-serif;
+    margin: 0;
+    background-color: #23408F;
+}
+
+p {
+    letter-spacing: 1.2px;
+    color: #23408F;
+    font-size: 1.1rem;
+}
+
+a {
+    background-color: #75CABE;
+    text-decoration: none;
+    color: #23408F;
+    padding: 5px;
+    font-size: 1.3rem;
+}
+header {
+    width: 100%;
+    background-color: #75CABE;
+    z-index: 2;
+    overflow: auto;
+}
+
+header h1 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    float: left;
+    font-size: 4rem;
+    color: #23408F;
+}
+
+header form {
+    margin-top: 20px;
+    margin-left: 40px;
+    margin-right: 20px;
+    margin-left: 10px;
+    float: right;
+    padding: 0;
+}
+
+header form input {
+    border-color: #23408F;
+    border-width: 2px;
+    background: none;
+    color: #23408F;
+    text-decoration: none;
+    cursor: -webkit-grab;
+    padding: 5px;
+    font-size: 1.8rem;
+    font-family: simplifica, Helvetica, sans-serif;
+}
+
+header a {
+    border-color: #23408F;
+    border-width: 2px;
+    border-style: solid;
+    margin-top: 20px;
+    float: right;
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #23408F;
+    padding: 5px;
+}
+
+.mainContent {
+    margin: 20px;
+}
+
+.contentItem {
+    margin: 10px;
+    background-color: #D7EBFE;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.contentItem .label {
+    font-style: italic;
+    margin: 3px;
+}
+
+.contentItem .content {
+    text-wrap: normal;
+    margin: 3px;
+}
+
+.contentItem .buttonDiv {
+    margin: 5px;
+    margin-top: 10px;
+}
+
+.divider {
+    background-color: #23408F;
+    height: 1.5px;
+}
