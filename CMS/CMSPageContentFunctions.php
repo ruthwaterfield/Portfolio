@@ -58,10 +58,38 @@ function getContentWithId(int $id) : array {
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `id` = :id;";
+        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `deleted` = 0 AND `id` = :id;";
         $query = $db->prepare($sql);
 
         $query->bindParam(':id', $id, PDO::PARAM_INT, 11);
+
+        $query->execute();
+        $result = $query->fetch();
+//        var_dump($result);
+    } catch (Exception $e) {
+        echo $e->getMessage();
+    }
+    return $result;
+}
+
+/**
+ * getContentWithTextLabels finds the content from the database with a specified textLabel
+ *
+ * @param string $textLabel The text label of the content to be selected
+ *
+ * @return array The content data
+ */
+function getContentWithTextLabel(string $textLabel) : array {
+    $result = [];
+    try {
+        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
+        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        $sql = "SELECT `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `deleted` = 0 AND `textLabel` = :textLabel;";
+        $query = $db->prepare($sql);
+
+        $query->bindParam(':textLabel', $textLabel, PDO::PARAM_STR, 20);
 
         $query->execute();
         $result = $query->fetch();
