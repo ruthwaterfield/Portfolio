@@ -24,7 +24,7 @@ function editContentWithId(string $textLabel, string $textContent, string $image
             $query->bindParam(':textLabel', $textLabel, PDO::PARAM_STR, 20);
             $query->bindParam(':textContent', $textContent, PDO::PARAM_STR);
             $query->bindParam(':imageLabel', $imageLabel, PDO::PARAM_STR, 20);
-            $query->bindParam(':imageLocation', $imageLocation, PDO::PARAM_STR, 30);
+            $query->bindParam(':imageLocation', $imageLocation, PDO::PARAM_STR);
             $query->bindParam(':id', $id, PDO::PARAM_INT, 11);
         } else {
             $sql = "UPDATE `Content` SET `textLabel` = :textLabel, `textContent` = :textContent WHERE `id` = :id;";

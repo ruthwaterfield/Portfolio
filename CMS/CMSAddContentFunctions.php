@@ -25,7 +25,7 @@ function addContentToPage(string $textLabel, string $textContent, string $imageL
             $query->bindParam(':textLabel', $textLabel, PDO::PARAM_STR, 20);
             $query->bindParam(':textContent', $textContent, PDO::PARAM_STR);
             $query->bindParam(':imageLabel', $imageLabel, PDO::PARAM_STR, 20);
-            $query->bindParam(':imageLocation', $imageLocation, PDO::PARAM_STR, 30);
+            $query->bindParam(':imageLocation', $imageLocation, PDO::PARAM_STR);
             $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
         }
         else {

@@ -51,7 +51,7 @@ include_once ("CMS/CMSPageContentFunctions.php");
 			<section class="upperSection">
 				<div class="blurb">
 					<h2>
-                        <?php echo getPageText('blurbHeader'); ?>
+                        <?php echo getContentWithTextLabel('Blurb Header')['textContent']?>
 					</h2>
 					<p>
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -66,9 +66,9 @@ include_once ("CMS/CMSPageContentFunctions.php");
 	
 			<section class="lowerSection">
 				<div class="infoItem">
-                    <img src="<?php echo getPageImage('infoItem1');?>"/>
+                    <img src="<?php echo getContentWithTextLabel('Info Item 1')['imageLocation']?>"/>
 					<p>
-						<?php echo getTextForImage('infoItem1');?>
+						<?php echo getContentWithTextLabel('Info Item 2')['textContent']?>
 					</p>
 				</div>
 				<div class="infoItem">
