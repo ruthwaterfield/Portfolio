@@ -21,7 +21,7 @@ if(!isset($_SESSION['pageId'])) {
 <div>
     <form method="POST" action="CMSChangeOccurred.php">
         <input name="action" type="hidden" value="add">
-        <input name="pageId" type="hidden" value=<?php echo $_SESSION['pageId']?>>
+        <input name="pageId" type="hidden" value="<?php echo $_SESSION['pageId']?>">
         Text label:
         <label title="Text label:"/>
         <input name="textLabel" type="text" required maxlength="20"> <br/>

@@ -59,7 +59,7 @@ $contentArray = getContentWithId($_GET['id']);?>
 
     <form method="POST" action="CMSChangeOccurred.php">
         <input name="action" type="hidden" value="delete">
-        <input name="id" type="hidden" value=<?php echo $contentArray['id']?>>
+        <input name="id" type="hidden" value="<?php echo $contentArray['id']?>">
         <input type="submit" value="Delete this content">
     </form>
 
