@@ -3,7 +3,9 @@ require_once ('CMSNavigation.php');
 require_once ('CMSPageContentFunctions.php');
 
 session_start();
-
+if ($_SESSION['loggedIn'] != 1) {
+    header('Location: index.php');
+}
 if(!isset($_SESSION['pageId'])) {
     header('Location: CMSChoosePage.php');
 }
@@ -17,6 +19,10 @@ if(!isset($_SESSION['pageId'])) {
 
 <body>
 <h1> Edit content in: <?php echo getPageNameFromPageId($_SESSION['pageId'])?></h1>
+
+<form action="CMSLogIn.php" method="POST">
+    <input type="submit" name="logOut" value="LOG OUT">
+</form>
 
 <?php
 if(!isset($_GET['id'])) {

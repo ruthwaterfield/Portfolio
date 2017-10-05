@@ -2,6 +2,9 @@
 require_once ('CMSPageContentFunctions.php');
 
 session_start();
+if ($_SESSION['loggedIn'] != 1) {
+    header('Location: index.php');
+}
 
 if(isset($_GET['pageId']))
 {
@@ -24,6 +27,10 @@ else
 
 <body>
 <h1> Page content: <?php echo getPageNameFromPageId($_SESSION['pageId'])?></h1>
+
+<form action="CMSLogIn.php" method="POST">
+    <input type="submit" name="logOut" value="LOG OUT">
+</form>
 
 <div>
 <a href="CMSChoosePage.php">
