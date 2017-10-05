@@ -42,7 +42,7 @@ function contentHasImage($imageLabel, $imageLocation) : bool {
         }
     }
     return $result;
-}x
+}
 
 /**
  * getContentWithId find the content from the database with a specified id
