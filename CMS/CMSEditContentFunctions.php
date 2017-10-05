@@ -76,7 +76,7 @@ function markContentAsDeleted(int $id) : bool {
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "UPDATE `Content` SET `deleted` = 0 WHERE `id` = :id;";
+        $sql = "UPDATE `Content` SET `deleted` = 1 WHERE `id` = :id;";
         $query = $db->prepare($sql);
 
         $query->bindParam(':id', $id, PDO::PARAM_INT, 11);
