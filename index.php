@@ -40,7 +40,7 @@ $_SESSION['pageId'] = 1;
 			<section class="upperSection">
 				<div class="blurb">
 					<h2>
-                        <?php echo getContentWithTextLabel('Blurb Header')['textContent']?>
+                        <?php echo getContentWithTextLabel('Blurb Header', $_SESSION['pageId'])['textContent']?>
 					</h2>
 					<p>
 						Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
@@ -55,21 +55,30 @@ $_SESSION['pageId'] = 1;
 	
 			<section class="lowerSection">
 				<div class="infoItem">
-                    <img src="<?php echo getContentWithTextLabel('Info Item 1')['imageLocation']?>"/>
+                    <?php $infoItem1 = getContentWithTextLabel('Info Item 1', $_SESSION['pageId']);
+                    if(contentHasImage($infoItem1['imageLabel'], $infoItem1['imageLocation'])) { ?>
+                    <img src="<?php echo $infoItem1['imageLocation']?>"/>
+                    <?php } ?>
 					<p>
-						<?php echo getContentWithTextLabel('Info Item 1')['textContent']?>
+						<?php echo $infoItem1['textContent']?>
 					</p>
 				</div>
 				<div class="infoItem">
-                    <img src="<?php echo getContentWithTextLabel('Info Item 2')['imageLocation']?>"/>
+                    <?php $infoItem2 = getContentWithTextLabel('Info Item 2', $_SESSION['pageId']);
+                    if(contentHasImage($infoItem2['imageLabel'], $infoItem2['imageLocation'])) { ?>
+                    <img src="<?php echo $infoItem2['imageLocation']?>"/>
+                    <?php } ?>
                     <p>
-                        <?php echo getContentWithTextLabel('Info Item 2')['textContent']?>
+                        <?php echo $infoItem2['textContent']?>
                     </p>
 				</div>
 				<div class="infoItem">
-                    <img src="<?php echo getContentWithTextLabel('Info Item 3')['imageLocation']?>"/>
+                    <?php $infoItem3 = getContentWithTextLabel('Info Item 3', $_SESSION['pageId']);
+                    if(contentHasImage($infoItem3['imageLabel'], $infoItem3['imageLocation'])) { ?>
+                    <img src="<?php echo $infoItem3['imageLocation']?>"/>
+                    <?php } ?>
                     <p>
-                        <?php echo getContentWithTextLabel('Info Item 3')['textContent']?>
+                        <?php echo $infoItem3['textContent']?>
                     </p>
 				</div>
 			</section>

@@ -38,34 +38,68 @@ include_once ("CMS/CMSPageContentFunctions.php");
 		<div class= "central">
 		
 			<section class="profile">
-				<img src="Images/IMG_20170807_145211.jpg">
-				<p>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-				</p>
+                <?php $profile = getContentWithTextLabel('Profile', $_SESSION['pageId']);
+                if(contentHasImage($profile['imageLabel'], $profile['imageLocation'])) { ?>
+                <img src="<?php echo $profile['imageLocation']?>"/>
+                <?php } ?>
+                <p>
+                    <?php echo $profile['textContent']?>
+                </p>
 			</section>
+
+            <section class="lowerSection">
+                <?php
+                $contentItems = getContentForPage($_SESSION['pageId']);
+                $count = 1;
+                foreach ($contentItems as $contentItem) {
+                    if ($contentItem['textLabel'] != 'Profile') { //treat everything except profile in the following way:
+                        if ($count & 1) { //odd items ?>
+                            <div class="infoItem">
+                                <p>
+                                    <?php echo $contentItem['textContent']; ?>
+                                </p>
+                                <?php if (contentHasImage($contentItem['imageLabel'], $contentItem['imageLocation'])) { ?>
+                                    <img src="<?php echo $contentItem['imageLocation'] ?>">
+                                <?php } ?>
+                            </div>
+                        <?php } else { ?>
+                            <div class="infoItem">
+                                <?php if (contentHasImage($contentItem['imageLabel'], $contentItem['imageLocation'])) { ?>
+                                    <img src="<?php echo $contentItem['imageLocation'] ?>">
+                                <?php } ?>
+                                <p>
+                                    <?php echo $contentItem['textContent']; ?>
+                                </p>
+                            </div>
+                        <?php }
+                        $count++;
+                    }
+                } ?>
+
+
 				
-			<section class="lowerSection">
-				<div class="infoItem">
-					<p>
-						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt 						explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. 
-					</p>
-					<img src="Images/ayda-oz-302461.jpg">
-				</div>
-			
-				<div class="infoItem">
-					<img src="Images/IMG_20170823_153953.jpg">
-					<p>
-						Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad 						minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? 
-					</p>
-				</div>
-			
-				<div class="infoItem">
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-					</p>
-					<img src="Images/P1010888.JPG">
-				</div>
-			</section>
+<!--			<section class="lowerSection">-->
+<!--				<div class="infoItem">-->
+<!--					<p>-->
+<!--						Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt 						explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.-->
+<!--					</p>-->
+<!--					<img src="Images/ayda-oz-302461.jpg">-->
+<!--				</div>-->
+<!--			-->
+<!--				<div class="infoItem">-->
+<!--					<img src="Images/IMG_20170823_153953.jpg">-->
+<!--					<p>-->
+<!--						Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad 						minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? -->
+<!--					</p>-->
+<!--				</div>-->
+<!--			-->
+<!--				<div class="infoItem">-->
+<!--					<p>-->
+<!--						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.-->
+<!--					</p>-->
+<!--					<img src="Images/P1010888.JPG">-->
+<!--				</div>-->
+<!--			</section>-->
 		
 		</div>
 	</article>
