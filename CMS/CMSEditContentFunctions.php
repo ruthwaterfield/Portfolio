@@ -1,4 +1,5 @@
 <?php
+require_once ('CMSDatabaseFunctions.php');
 /**
  * editContentWithId updates content item given the id of the item
  *
@@ -13,9 +14,7 @@
 function editContentWithId(string $textLabel, string $textContent, string $imageLabel, string $imageLocation, int $id) : bool {
     $result = 0;
     try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = createPDO();
 
         if(imageShouldBeAdded($imageLabel, $imageLocation)) {
             $sql = "UPDATE `Content` SET `textLabel` = :textLabel, `textContent` = :textContent, `imageLabel` = :imageLabel, `imageLocation` = :imageLocation WHERE `id` = :id;";
@@ -72,9 +71,7 @@ function imageShouldBeIncluded(string $imageLabel, string $imageLocation) : bool
 function markContentAsDeleted(int $id) : bool {
     $result = 0;
     try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = createPDO();
 
         $sql = "UPDATE `Content` SET `deleted` = 1 WHERE `id` = :id;";
         $query = $db->prepare($sql);

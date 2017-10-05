@@ -1,4 +1,5 @@
 <?php
+require_once ('CMSDatabaseFunctions.php');
 
 /**
  * getPages returns an array containing the names and ids of all pages in the website
@@ -8,9 +9,7 @@
 function getPages() : array {
     $result = [];
     try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = createPDO();
 
         $sql = "SELECT `id`, `name` FROM `Pages` ORDER BY `id`;";
         $query = $db->prepare($sql);
@@ -33,9 +32,7 @@ function getPages() : array {
 function getPageNameFromPageId(int $pageId) : string {
     $result = 'None selected';
     try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = createPDO();
 
         $sql = "SELECT `name` FROM `Pages` WHERE `id` = :pageId;";
         $query = $db->prepare($sql);

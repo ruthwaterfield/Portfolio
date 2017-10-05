@@ -6,16 +6,12 @@ header('Location: index.php');
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title> Choose page </title>
 </head>
 
 <h1> Choose page to edit: </h1>
-
-<form action="CMSLogIn.php" method="POST">
-    <input type="submit" name="logOut" value="LOG OUT">
-</form>
 
 <form action="CMSLogIn.php" method="POST">
     <input type="submit" name="logOut" value="LOG OUT">

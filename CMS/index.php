@@ -7,7 +7,7 @@ if ($_SESSION['loggedIn'] == 1) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Log in to CMS</title>
 </head>

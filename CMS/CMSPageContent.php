@@ -20,7 +20,7 @@ else
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Page content: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>  </title>
 </head>

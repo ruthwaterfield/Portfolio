@@ -1,4 +1,5 @@
 <?php
+require_once ('CMSDatabaseFunctions.php');
 
 /**
  * getContentForPage returns an array of all the contents for a specified page.
@@ -10,9 +11,7 @@
 function getContentForPage(int $pageId) : array {
     $result = [];
     try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = createPDO();
 
         $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `deleted` = 0 AND `pageId` = :pageId ORDER BY `id`;";
         $query = $db->prepare($sql);
@@ -54,9 +53,7 @@ function contentHasImage($imageLabel, $imageLocation) : bool {
 function getContentWithId(int $id, int $pageId) : array {
     $result = [];
     try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = createPDO();
 
         $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `deleted` = 0 AND `id` = :id AND `pageId` = :pageId;";
         $query = $db->prepare($sql);
@@ -83,9 +80,7 @@ function getContentWithId(int $id, int $pageId) : array {
 function getContentWithTextLabel(string $textLabel, int $pageId) : array {
     $result = [];
     try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = createPDO();
 
         $sql = "SELECT `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `deleted` = 0 AND `textLabel` = :textLabel AND `pageId` = :pageId;";
         $query = $db->prepare($sql);

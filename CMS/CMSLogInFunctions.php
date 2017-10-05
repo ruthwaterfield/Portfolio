@@ -1,6 +1,5 @@
 <?php
 
-
 /**
  * haveCredentialsBeenEntered checks to see if the username and password have been entered
  *

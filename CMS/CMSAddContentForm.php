@@ -12,7 +12,7 @@ if(!isset($_SESSION['pageId'])) {
 ?>
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Add content to: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>  </title>
 </head>

@@ -1,4 +1,5 @@
 <?php
+require_once ('CMSDatabaseFunctions.php');
 
 /**
  * addContentToPage enters a new content item into the database
@@ -14,9 +15,7 @@
 function addContentToPage(string $textLabel, string $textContent, string $imageLabel, string $imageLocation, int $pageId) : bool {
     $result = 0;
     try {
-        $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
-        $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $db = createPDO();
 
         if(imageShouldBeAdded($imageLabel, $imageLocation)) {
             $sql = "INSERT INTO `Content` (`textLabel`, `textContent`, `imageLabel`, `imageLocation`, `pageId`) VALUES (:textLabel, :textContent, :imageLabel, :imageLocation, :pageId);";
