@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require ('../loginFunc.php');
+require ('../CMS/CMSLogInFunctions.php');
 
 class StackTest extends TestCase
 {
@@ -14,7 +14,7 @@ class StackTest extends TestCase
      */
     public function testShaveCredentialsBeenEntered()
     {
-        $creds = ['username' => USERNAME, 'password' => PASSWORD];
+        $creds = ['username' => $this::USERNAME, 'password' => $this::PASSWORD];
         $actual = haveCredentialsBeenEntered($creds);
         $this -> assertTrue($actual);
     }
@@ -73,7 +73,7 @@ class StackTest extends TestCase
      */
     public function testSisUsernameValid()
     {
-        $actual = isUsernameValid(USERNAME);
+        $actual = isUsernameValid($this::USERNAME);
         $this -> assertTrue($actual);
     }
 
