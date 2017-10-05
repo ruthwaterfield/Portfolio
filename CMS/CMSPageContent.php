@@ -47,17 +47,17 @@ else
         foreach ($pageContentsArray as $contentItem) { ?>
             <div>
             <p>
-                Text Label: <?php echo $contentItem['textLabel']?>
+                Text label: <?php echo $contentItem['textLabel']?>
             </p>
             <p>
-                Text Content: <?php echo $contentItem['textContent']?>
+                Text content: <?php echo $contentItem['textContent']?>
             </p>
-                <?php if (contentHasImage($contentItem['imageLabel'], $contentItem['imageUrl'])) { ?>
+                <?php if (contentHasImage($contentItem['imageLabel'], $contentItem['imageLocation'])) { ?>
                     <p>
-                        Image Label: <?php echo $contentItem['imageLabel']?>
+                        Image label: <?php echo $contentItem['imageLabel']?>
                     </p>
                     <p>
-                        Image Url: <?php echo $contentItem['imageUrl']?>
+                        Image location: <?php echo $contentItem['imageLocation']?>
                     </p>
 
                 <?php } ?>

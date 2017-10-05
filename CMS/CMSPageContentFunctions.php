@@ -14,7 +14,7 @@ function getContentForPage(int $pageId) : array {
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageUrl` FROM `Content` WHERE `deleted` = 0 AND `pageId` = :pageId ORDER BY `id`;";
+        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `deleted` = 0 AND `pageId` = :pageId ORDER BY `id`;";
         $query = $db->prepare($sql);
 
         $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
@@ -30,19 +30,19 @@ function getContentForPage(int $pageId) : array {
  * contentHasImage tests an item of content and determines whether it has an image specified.
  *
  * @param $imageLabel The field of the database that would contain the image label.
- * @param $imageUrl The field of the database that would contain the image url.
+ * @param $imageLocation The field of the database that would contain the image Location.
  *
  * @return bool 1 if the content item has an image, 0 if not.
  */
-function contentHasImage($imageLabel, $imageUrl) : bool {
+function contentHasImage($imageLabel, $imageLocation) : bool {
     $result = 0;
-    if($imageLabel != NULL && $imageUrl != NULL) {
-        if(is_string($imageLabel) && is_string($imageUrl)) {
+    if($imageLabel != NULL && $imageLocation != NULL) {
+        if(is_string($imageLabel) && is_string($imageLocation)) {
             $result = 1;
         }
     }
     return $result;
-}
+}x
 
 /**
  * getContentWithId find the content from the database with a specified id
@@ -58,7 +58,7 @@ function getContentWithId(int $id) : array {
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageUrl` FROM `Content` WHERE `id` = :id;";
+        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `id` = :id;";
         $query = $db->prepare($sql);
 
         $query->bindParam(':id', $id, PDO::PARAM_INT, 11);

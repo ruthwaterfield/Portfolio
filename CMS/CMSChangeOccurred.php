@@ -23,7 +23,7 @@ if (isset($_POST['action'])) {
     switch ($_POST['action']) {
         case "add" :
             if(isValidAddContentFormSubmission()) {
-                if (addContentToPage($_POST['textLabel'], $_POST['textContent'], $_POST['imageLabel'], $_POST['imageUrl'], $_POST['pageId'])) {
+                if (addContentToPage($_POST['textLabel'], $_POST['textContent'], $_POST['imageLabel'], $_POST['imageLocation'], $_POST['pageId'])) {
                     echo "Successfully added :-) </br>";
                     ?>
                     <a href="CMSPageContent.php">
@@ -43,7 +43,7 @@ if (isset($_POST['action'])) {
 
         case "edit" :
             if(isValidEditContentFormSubmission()) {
-                if (editContentWithId($_POST['textLabel'], $_POST['textContent'], $_POST['imageLabel'], $_POST['imageUrl'], $_POST['id'])) {
+                if (editContentWithId($_POST['textLabel'], $_POST['textContent'], $_POST['imageLabel'], $_POST['imageLocation'], $_POST['id'])) {
                     echo "Successfully edited :-) </br>";
                     ?>
                     <a href="CMSPageContent.php">
@@ -91,7 +91,7 @@ if (isset($_POST['action'])) {
  */
 function isValidAddContentFormSubmission() : bool {
     $result = 0;
-    if (isset($_POST['textLabel']) && isset($_POST['textContent']) && isset($_POST['imageLabel']) && isset($_POST['imageUrl']) && isset($_POST['pageId'])){
+    if (isset($_POST['textLabel']) && isset($_POST['textContent']) && isset($_POST['imageLabel']) && isset($_POST['imageLocation']) && isset($_POST['pageId'])){
         $result = 1;
     }
     return $result;
@@ -104,7 +104,7 @@ function isValidAddContentFormSubmission() : bool {
  */
 function isValidEditContentFormSubmission() : bool {
     $result = 0;
-    if (isset($_POST['textLabel']) && isset($_POST['textContent']) && isset($_POST['imageLabel']) && isset($_POST['imageUrl']) && isset($_POST['id'])){
+    if (isset($_POST['textLabel']) && isset($_POST['textContent']) && isset($_POST['imageLabel']) && isset($_POST['imageLocation']) && isset($_POST['id'])){
         $result = 1;
     }
     return $result;
