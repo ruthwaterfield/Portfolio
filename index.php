@@ -1,8 +1,8 @@
 <?php
 session_start();
 $_SESSION['pageId'] = 1;
-require_once("homeFunctions.php");
 require_once('Navigation.php');
+include_once ("CMS/CMSPageContentFunctions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
