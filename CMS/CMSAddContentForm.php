@@ -33,7 +33,7 @@ if(!isset($_SESSION['pageId'])) {
         <input name="imageLabel" type="text" maxlength="20"> <br/>
         (Optional) Image location:
         <label title="Image location"/>
-        <input name="imageLocation" type="text" maxlength="30"> <br/>
+        <input name="imageLocation" type="text"> <br/>
         <input type="submit" value="Add content">
     </form>
 

@@ -44,14 +44,14 @@ $contentArray = getContentWithId($_GET['id']);?>
     <input name="imageLabel" type="text" maxlength="20" value="<?php echo $contentArray['imageLabel']?>"> <br/>
     (Optional) Image location:
     <label title="Image location"/>
-    <input name="imageLocation" type="text" maxlength="30" value="<?php echo $contentArray['imageLocation']?>"> <br/>
+    <input name="imageLocation" type="text" value="<?php echo $contentArray['imageLocation']?>"> <br/>
     <?php } else { ?>
         (Optional) Image label:
         <label title="Image label:"/>
         <input name="imageLabel" type="text" maxlength="20"> <br/>
         (Optional) Image location:
         <label title="Image location"/>
-        <input name="imageLocation" type="text" maxlength="30"> <br/>
+        <input name="imageLocation" type="text"> <br/>
     <?php } ?>
 
         <input type="submit" value="Edit this content">
