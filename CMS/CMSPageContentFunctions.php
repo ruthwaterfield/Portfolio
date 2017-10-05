@@ -51,17 +51,18 @@ function contentHasImage($imageLabel, $imageLocation) : bool {
  *
  * @return array The content data
  */
-function getContentWithId(int $id) : array {
+function getContentWithId(int $id, int $pageId) : array {
     $result = [];
     try {
         $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `deleted` = 0 AND `id` = :id;";
+        $sql = "SELECT `id`, `textLabel`, `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `deleted` = 0 AND `id` = :id AND `pageId` = :pageId;";
         $query = $db->prepare($sql);
 
         $query->bindParam(':id', $id, PDO::PARAM_INT, 11);
+        $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
 
         $query->execute();
         $result = $query->fetch();
@@ -79,17 +80,18 @@ function getContentWithId(int $id) : array {
  *
  * @return array The content data
  */
-function getContentWithTextLabel(string $textLabel) : array {
+function getContentWithTextLabel(string $textLabel, int $pageId) : array {
     $result = [];
     try {
         $db = new PDO('mysql:host=127.0.0.1;dbname=WebsiteContentDb', 'root', '');
         $db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $sql = "SELECT `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `deleted` = 0 AND `textLabel` = :textLabel;";
+        $sql = "SELECT `textContent`, `imageLabel`, `imageLocation` FROM `Content` WHERE `deleted` = 0 AND `textLabel` = :textLabel AND `pageId` = :pageId;";
         $query = $db->prepare($sql);
 
         $query->bindParam(':textLabel', $textLabel, PDO::PARAM_STR, 20);
+        $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
 
         $query->execute();
         $result = $query->fetch();

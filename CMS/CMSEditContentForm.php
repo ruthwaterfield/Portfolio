@@ -23,7 +23,7 @@ if(!isset($_GET['id'])) {
     header('Location: CMSPageContent.php');
 }
 
-$contentArray = getContentWithId($_GET['id']);?>
+$contentArray = getContentWithId($_GET['id'], $_SESSION['pageId']);?>
 
 
 <div>
