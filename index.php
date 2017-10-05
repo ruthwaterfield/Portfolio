@@ -68,20 +68,20 @@ include_once ("CMS/CMSPageContentFunctions.php");
 				<div class="infoItem">
                     <img src="<?php echo getContentWithTextLabel('Info Item 1')['imageLocation']?>"/>
 					<p>
-						<?php echo getContentWithTextLabel('Info Item 2')['textContent']?>
+						<?php echo getContentWithTextLabel('Info Item 1')['textContent']?>
 					</p>
 				</div>
 				<div class="infoItem">
-					<img src="Images/bath-1988875_1920.jpg">
-					<p>
-						Bath
-					</p>
+                    <img src="<?php echo getContentWithTextLabel('Info Item 2')['imageLocation']?>"/>
+                    <p>
+                        <?php echo getContentWithTextLabel('Info Item 2')['textContent']?>
+                    </p>
 				</div>
 				<div class="infoItem">
-					<img src="Images/spaghetti-ingredients-2378728_1920.jpg">
-					<p>
-						Food
-					</p>
+                    <img src="<?php echo getContentWithTextLabel('Info Item 3')['imageLocation']?>"/>
+                    <p>
+                        <?php echo getContentWithTextLabel('Info Item 3')['textContent']?>
+                    </p>
 				</div>
 			</section>
 		</div>
