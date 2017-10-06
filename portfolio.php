@@ -1,7 +1,7 @@
 <?php
 session_start();
 $_SESSION['pageId'] = 3;
-require_once('Navigation.php');
+require_once('navigation.php');
 include_once("CMS/CMSPageContentFunctions.php");
 ?>
 <!DOCTYPE html>
