@@ -36,6 +36,16 @@ form {
     color: #23408F;
 }
 
+form div {
+    width: 15%;
+    display: inline-block;
+}
+
+form .textContentDiv {
+    vertical-align: bottom;
+    height: 3rem;
+}
+
 form input {
     margin: 3px;
 }
@@ -55,7 +65,7 @@ form input[type=text], input[type=password], textarea {
     color: #23408F;
     font-family: simplifica, Helvetica, sans-serif;
     letter-spacing: 1.2px;
-    width: 80%;
+    width: 84%;
 }
 
 form textarea {
@@ -66,10 +76,7 @@ textarea:focus, input:focus{
     outline: none;
 }
 
-form p {
-    vertical-align: middle;
-    margin: auto;
-    width: 15%;
+form div {
     display: inline-block;
 }
 

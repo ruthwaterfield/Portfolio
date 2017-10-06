@@ -49,27 +49,32 @@ if (!isset($_SESSION['pageId'])) {
         <input name="action" type="hidden" value="edit">
         <input name="pageId" type="hidden" value="<?php echo $_SESSION['pageId'] ?>">
         <input name="id" type="hidden" value="<?php echo $contentArray['id'] ?>">
-        <p>Text label:</p>
-        <label about="Text label:"/>
+        <div>
+            <label for="textLabel"> Text label: </label>
+        </div>
         <input name="textLabel" type="text" required maxlength="20" value="<?php echo $contentArray['textLabel'] ?>">
         <br/>
-        <p>Text content:</p>
-        <label about="Text content"/>
+        <div class="textContentDiv">
+        <label for="textContent"> Text content: </label>
+        </div>
         <textarea name="textContent" required rows="3"><?php echo $contentArray['textContent'] ?></textarea> <br/>
-
         <?php if (contentHasImage($contentArray['imageLabel'], $contentArray['imageLocation'])) { ?>
-            <p>(Optional) Image label:</p>
-            <label about="Image label:"/>
+            <div>
+            <label for="imageLabel"> (Optional) Image label: </label>
+            </div>
             <input name="imageLabel" type="text" maxlength="20" value="<?php echo $contentArray['imageLabel'] ?>"> <br/>
-            <p>(Optional) Image location:</p>
-            <label about="Image location"/>
+            <div>
+            <label for="imageLocation"> (Optonal) Image location: </label>
+            </div>
             <input name="imageLocation" type="text" value="<?php echo $contentArray['imageLocation'] ?>"> <br/>
         <?php } else { ?>
-            <p>(Optional) Image label:</p>
-            <label about="Image label:"/>
-            <input name="imageLabel" type="text" maxlength="20"> <br/>
-            <p>(Optional) Image location:</p>
-            <label about="Image location"/>
+            <div>
+            <label for="imageLabel"> (Optional) Image label: </label>
+            </div>
+                <input name="imageLabel" type="text" maxlength="20"> <br/>
+            <div>
+            <label for="imageLocation"> (Optonal) Image location: </label>
+            </div>
             <input name="imageLocation" type="text"> <br/>
         <?php } ?>
 
