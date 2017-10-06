@@ -16,7 +16,7 @@ body {
 
 p {
     color: #23408F;
-    font-size: 1.1rem;
+    text-wrap: normal;
 }
 
 a {
@@ -33,7 +33,6 @@ form {
     background-color: #D7EBFE;
     padding: 10px;
     border-radius: 10px;
-    font-size: 1.1rem;
     color: #23408F;
 }
 
@@ -45,7 +44,6 @@ form input[type=submit] {
     background-color: #75CABE;
     text-decoration: none;
     padding: 5px;
-    font-size: 1.1rem;
     border: none;
     font-family: simplifica, Helvetica, sans-serif;
     letter-spacing: 1.2px;
@@ -57,7 +55,6 @@ form input[type=text], input[type=password], textarea {
     color: #23408F;
     font-family: simplifica, Helvetica, sans-serif;
     letter-spacing: 1.2px;
-    font-size: 1.1rem;
     width: 80%;
 }
 
@@ -96,13 +93,12 @@ header form {
     margin-top: 20px;
     margin-left: 40px;
     margin-right: 20px;
-    margin-left: 10px;
     float: right;
     padding: 0;
 }
 
 header form input[type=submit] {
-    margin: 0px;
+    margin: 0;
     border: solid;
     border-color: #23408F;
     border-width: 2px;
@@ -159,5 +155,5 @@ header a {
 }
 
 .pageChooser a {
-    font-size: 3rem;
+    font-size: 2rem;
 }
