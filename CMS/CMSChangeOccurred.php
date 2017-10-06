@@ -1,28 +1,28 @@
 <?php
-require_once ('CMSNavigation.php');
-require_once ('CMSAddContentFunctions.php');
-require_once ('CMSEditContentFunctions.php');
+require_once('CMSNavigation.php');
+require_once('CMSAddContentFunctions.php');
+require_once('CMSEditContentFunctions.php');
 
 session_start();
 if ($_SESSION['loggedIn'] != 1) {
     header('Location: index.php');
 }
-if(!isset($_SESSION['pageId'])) {
+if (!isset($_SESSION['pageId'])) {
     header('Location: CMSChoosePage.php');
 }
 ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
-        <title>Making a change to page: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>  </title>
+        <title>Making a change to page: <?php echo getPageNameFromPageId($_SESSION['pageId']) ?>  </title>
         <link rel="stylesheet" type="text/css" href="../CMSStyles/normalize.css">
         <link rel="stylesheet" type="text/css" href="../CMSStyles/CMSTheme.css">
     </head>
 
 <body>
 
-    <header>
-    <h1> Making a change to page: <?php echo getPageNameFromPageId($_SESSION['pageId'])?></h1>
+<header>
+    <h1> Making a change to page: <?php echo getPageNameFromPageId($_SESSION['pageId']) ?></h1>
 
     <form action="CMSLogIn.php" method="POST">
         <input type="submit" name="logOut" value="Log out">
@@ -35,78 +35,78 @@ if(!isset($_SESSION['pageId'])) {
     <div class="contentItem">
 
 
-<?php
-if (isset($_POST['action'])) {
-    switch ($_POST['action']) {
-        case "add" :
-            if(isValidAddContentFormSubmission()) {
-                if (addContentToPage($_POST['textLabel'], $_POST['textContent'], $_POST['imageLabel'], $_POST['imageLocation'], $_POST['pageId'])) {
-                    ?>
-                    <p> Successfully added :-) </p>
-                    <a href="CMSPageContent.php">
-                        Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>
-                    </a>
-                    <br/> <br/>
-                    <a href="CMSChoosePage.php">
-                        Choose a different page
-                    </a>
-                    <?php
-                } else { ?>
-                    <p>Something went wrong :-( </p>
-                    <a href="CMSPageContent.php">
-                        Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>
-                    </a>
-                    <?php
-                }
-            }
-            break;
+        <?php
+        if (isset($_POST['action'])) {
+            switch ($_POST['action']) {
+                case "add" :
+                    if (isValidAddContentFormSubmission()) {
+                        if (addContentToPage($_POST['textLabel'], $_POST['textContent'], $_POST['imageLabel'], $_POST['imageLocation'], $_POST['pageId'])) {
+                            ?>
+                            <p> Successfully added :-) </p>
+                            <a href="CMSPageContent.php">
+                                Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId']) ?>
+                            </a>
+                            <br/> <br/>
+                            <a href="CMSChoosePage.php">
+                                Choose a different page
+                            </a>
+                            <?php
+                        } else { ?>
+                            <p>Something went wrong :-( </p>
+                            <a href="CMSPageContent.php">
+                                Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId']) ?>
+                            </a>
+                            <?php
+                        }
+                    }
+                    break;
 
-        case "edit" :
-            if(isValidEditContentFormSubmission()) {
-                if (editContentWithId($_POST['textLabel'], $_POST['textContent'], $_POST['imageLabel'], $_POST['imageLocation'], $_POST['id'])) { ?>
-                    <p>Successfully edited :-) </p>
-                    <a href="CMSPageContent.php">
-                        Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>
-                    </a>
-                    <br/> <br/>
-                    <a href="CMSChoosePage.php">
-                        Choose a different page
-                    </a>
-                    <?php
-                } else { ?>
-                    <p>Something went wrong :-( </p>
-                    <a href="CMSPageContent.php">
-                        Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>
-                    </a>
-                    <?php
-                }
+                case "edit" :
+                    if (isValidEditContentFormSubmission()) {
+                        if (editContentWithId($_POST['textLabel'], $_POST['textContent'], $_POST['imageLabel'], $_POST['imageLocation'], $_POST['id'])) { ?>
+                            <p>Successfully edited :-) </p>
+                            <a href="CMSPageContent.php">
+                                Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId']) ?>
+                            </a>
+                            <br/> <br/>
+                            <a href="CMSChoosePage.php">
+                                Choose a different page
+                            </a>
+                            <?php
+                        } else { ?>
+                            <p>Something went wrong :-( </p>
+                            <a href="CMSPageContent.php">
+                                Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId']) ?>
+                            </a>
+                            <?php
+                        }
+                    }
+                    break;
+                case "delete" :
+                    if (isValidDeleteContentFormSubmission()) {
+                        if (markContentAsDeleted($_POST['id'])) { ?>
+                            <p>Successfully deleted :-) </p>
+                            <a href="CMSPageContent.php">
+                                Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId']) ?>
+                            </a>
+                            <br/> <br/>
+                            <a href="CMSChoosePage.php">
+                                Choose a different page
+                            </a>
+                            <?php
+                        } else { ?>
+                            <p>Something went wrong :-( </p>
+                            <a href="CMSPageContent.php">
+                                Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId']) ?>
+                            </a>
+                            <?php
+                        }
+                    }
+                    break;
+                default :
+                    header('Location: CMSPageContent.php');
             }
-            break;
-        case "delete" :
-            if(isValidDeleteContentFormSubmission()) {
-                if (markContentAsDeleted($_POST['id'])) { ?>
-                    <p>Successfully deleted :-) </p>
-                    <a href="CMSPageContent.php">
-                        Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>
-                    </a>
-                    <br/> <br/>
-                    <a href="CMSChoosePage.php">
-                        Choose a different page
-                    </a>
-                    <?php
-                } else { ?>
-                    <p>Something went wrong :-( </p>
-                    <a href="CMSPageContent.php">
-                        Go back to page content for: <?php echo getPageNameFromPageId($_SESSION['pageId'])?>
-                    </a>
-                    <?php
-                }
-            }
-            break;
-        default :
-            header('Location: CMSPageContent.php');
-    }
-} ?>
+        } ?>
     </div>
 </div>
 
@@ -117,9 +117,10 @@ if (isset($_POST['action'])) {
  *
  * @return bool Success (1) or failure (0)
  */
-function isValidAddContentFormSubmission() : bool {
+function isValidAddContentFormSubmission(): bool
+{
     $result = 0;
-    if (isset($_POST['textLabel']) && isset($_POST['textContent']) && isset($_POST['imageLabel']) && isset($_POST['imageLocation']) && isset($_POST['pageId'])){
+    if (isset($_POST['textLabel']) && isset($_POST['textContent']) && isset($_POST['imageLabel']) && isset($_POST['imageLocation']) && isset($_POST['pageId'])) {
         $result = 1;
     }
     return $result;
@@ -130,9 +131,10 @@ function isValidAddContentFormSubmission() : bool {
  *
  * @return bool Success (1) or failure (0)
  */
-function isValidEditContentFormSubmission() : bool {
+function isValidEditContentFormSubmission(): bool
+{
     $result = 0;
-    if (isset($_POST['textLabel']) && isset($_POST['textContent']) && isset($_POST['imageLabel']) && isset($_POST['imageLocation']) && isset($_POST['id'])){
+    if (isset($_POST['textLabel']) && isset($_POST['textContent']) && isset($_POST['imageLabel']) && isset($_POST['imageLocation']) && isset($_POST['id'])) {
         $result = 1;
     }
     return $result;
@@ -143,9 +145,10 @@ function isValidEditContentFormSubmission() : bool {
  *
  * @return bool Success (1) or failure (0)
  */
-function isValidDeleteContentFormSubmission() : bool {
+function isValidDeleteContentFormSubmission(): bool
+{
     $result = 0;
-    if (isset($_POST['id'])){
+    if (isset($_POST['id'])) {
         $result = 1;
     }
     return $result;

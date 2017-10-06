@@ -12,8 +12,7 @@ if ($_SESSION['loggedIn'] != 1) {
     }
 }
 
-if(isset($_POST['logOut']))
-{
+if (isset($_POST['logOut'])) {
     $_SESSION['loggedIn'] = 0;
     header('Location: index.php');
 }

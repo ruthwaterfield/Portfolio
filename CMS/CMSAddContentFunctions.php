@@ -1,5 +1,5 @@
 <?php
-require_once ('CMSDatabaseFunctions.php');
+require_once('CMSDatabaseFunctions.php');
 
 /**
  * addContentToPage enters a new content item into the database
@@ -12,12 +12,13 @@ require_once ('CMSDatabaseFunctions.php');
  *
  * @return bool Success (1) or failure (0)
  */
-function addContentToPage(string $textLabel, string $textContent, string $imageLabel, string $imageLocation, int $pageId) : bool {
+function addContentToPage(string $textLabel, string $textContent, string $imageLabel, string $imageLocation, int $pageId): bool
+{
     $result = 0;
     try {
         $db = createPDO();
 
-        if(imageShouldBeAdded($imageLabel, $imageLocation)) {
+        if (imageShouldBeAdded($imageLabel, $imageLocation)) {
             $sql = "INSERT INTO `Content` (`textLabel`, `textContent`, `imageLabel`, `imageLocation`, `pageId`) VALUES (:textLabel, :textContent, :imageLabel, :imageLocation, :pageId);";
             $query = $db->prepare($sql);
 
@@ -26,8 +27,7 @@ function addContentToPage(string $textLabel, string $textContent, string $imageL
             $query->bindParam(':imageLabel', $imageLabel, PDO::PARAM_STR, 20);
             $query->bindParam(':imageLocation', $imageLocation, PDO::PARAM_STR);
             $query->bindParam(':pageId', $pageId, PDO::PARAM_INT, 11);
-        }
-        else {
+        } else {
             $sql = "INSERT INTO `Content` (`textLabel`, `textContent`, `pageId`) VALUES (:textLabel, :textContent, :pageId);";
             $query = $db->prepare($sql);
 
@@ -55,9 +55,10 @@ function addContentToPage(string $textLabel, string $textContent, string $imageL
  *
  * @return bool image should be added (1), or image should not be added (0)
  */
-function imageShouldBeAdded(string $imageLabel, string $imageLocation) : bool {
+function imageShouldBeAdded(string $imageLabel, string $imageLocation): bool
+{
     $result = 1;
-    if($imageLabel == "" || $imageLocation == "") {
+    if ($imageLabel == "" || $imageLocation == "") {
         $result = 0;
     }
     return $result;

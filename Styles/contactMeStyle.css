@@ -1,48 +1,47 @@
 header nav ul li:nth-child(4) a {
-	color: #FFF9DB;
+    color: #FFF9DB;
 }
 
 @media screen and (min-height: 578px) {
-	.central {
-		height: calc(100vh - 70px);
-	}
+    .central {
+        height: calc(100vh - 70px);
+    }
 }
 
 .content {
-	margin-top: 5px;
-	padding: 5px;
+    margin-top: 5px;
+    padding: 5px;
 }
 
 .content .contactItem {
-	vertical-align: middle;
-	text-align: center;
+    vertical-align: middle;
+    text-align: center;
 }
 
 .content .contactItem img {
-	width: 15%;
-	vertical-align: middle;
+    width: 15%;
+    vertical-align: middle;
 }
 
 .content .contactItem p {
-	width: 40%;
-	text-align: center;
-	line-height: 5rem;
-	display: inline-block;
-	vertical-align: middle;
+    width: 40%;
+    text-align: center;
+    line-height: 5rem;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 .content .contactItem:nth-child(3) p {
-	line-height: 1rem;
+    line-height: 1rem;
 }
 
 @media screen and (max-width: 600px) {
-	
-	.content .contactItem img {
-		width: 20%;
-	}
-	
-	.content .contactItem p {
-		width: 65%;
-	}
-	
+    .content .contactItem img {
+        width: 20%;
+    }
+
+    .content .contactItem p {
+        width: 65%;
+    }
+}
 	

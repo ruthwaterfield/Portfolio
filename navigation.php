@@ -1,5 +1,5 @@
 <?php
-require_once ('CMS/CMSDatabaseFunctions.php');
+require_once('CMS/CMSDatabaseFunctions.php');
 
 /**
  * getPages returns an array containing the names, ids and urls of all pages in the website

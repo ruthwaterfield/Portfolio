@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require ("../CMS/CMSPageContentFunctions.php");
+require("../CMS/CMSPageContentFunctions.php");
 
 class StackTest extends TestCase
 {
@@ -14,8 +14,8 @@ class StackTest extends TestCase
         $imageLabel = 'someText';
         $imageUrl = 'someOtherText';
         $expected = 1;
-        $actual = contentHasImage($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = contentHasImage($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -26,8 +26,8 @@ class StackTest extends TestCase
         $imageLabel = 'someText';
         $imageUrl = '';
         $expected = 0;
-        $actual = contentHasImage($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = contentHasImage($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -38,8 +38,8 @@ class StackTest extends TestCase
         $imageLabel = '';
         $imageUrl = 'someOtherText';
         $expected = 0;
-        $actual = contentHasImage($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = contentHasImage($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -50,8 +50,8 @@ class StackTest extends TestCase
         $imageLabel = '';
         $imageUrl = '';
         $expected = 0;
-        $actual = contentHasImage($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = contentHasImage($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -62,8 +62,8 @@ class StackTest extends TestCase
         $imageLabel = 'someText';
         $imageUrl = NULL;
         $expected = 0;
-        $actual = contentHasImage($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = contentHasImage($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -74,8 +74,8 @@ class StackTest extends TestCase
         $imageLabel = NULL;
         $imageUrl = 'someText';
         $expected = 0;
-        $actual = contentHasImage($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = contentHasImage($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -86,8 +86,8 @@ class StackTest extends TestCase
         $imageLabel = NULL;
         $imageUrl = NULL;
         $expected = 0;
-        $actual = contentHasImage($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = contentHasImage($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -98,8 +98,8 @@ class StackTest extends TestCase
         $imageLabel = ['lemon', 'apple'];
         $imageUrl = [];
         $expected = 0;
-        $actual = contentHasImage($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = contentHasImage($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
 }

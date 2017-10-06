@@ -55,25 +55,25 @@ if (!isset($_SESSION['pageId'])) {
         <input name="textLabel" type="text" required maxlength="20" value="<?php echo $contentArray['textLabel'] ?>">
         <br/>
         <div class="textContentDiv">
-        <label for="textContent"> Text content: </label>
+            <label for="textContent"> Text content: </label>
         </div>
         <textarea name="textContent" required rows="3"><?php echo $contentArray['textContent'] ?></textarea> <br/>
         <?php if (contentHasImage($contentArray['imageLabel'], $contentArray['imageLocation'])) { ?>
             <div>
-            <label for="imageLabel"> (Optional) Image label: </label>
+                <label for="imageLabel"> (Optional) Image label: </label>
             </div>
             <input name="imageLabel" type="text" maxlength="20" value="<?php echo $contentArray['imageLabel'] ?>"> <br/>
             <div>
-            <label for="imageLocation"> (Optonal) Image location: </label>
+                <label for="imageLocation"> (Optonal) Image location: </label>
             </div>
             <input name="imageLocation" type="text" value="<?php echo $contentArray['imageLocation'] ?>"> <br/>
         <?php } else { ?>
             <div>
-            <label for="imageLabel"> (Optional) Image label: </label>
+                <label for="imageLabel"> (Optional) Image label: </label>
             </div>
-                <input name="imageLabel" type="text" maxlength="20"> <br/>
+            <input name="imageLabel" type="text" maxlength="20"> <br/>
             <div>
-            <label for="imageLocation"> (Optonal) Image location: </label>
+                <label for="imageLocation"> (Optonal) Image location: </label>
             </div>
             <input name="imageLocation" type="text"> <br/>
         <?php } ?>

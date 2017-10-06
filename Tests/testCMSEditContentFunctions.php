@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require ("../CMS/CMSEditContentFunctions.php");
+require("../CMS/CMSEditContentFunctions.php");
 
 class StackTest extends TestCase
 {
@@ -14,8 +14,8 @@ class StackTest extends TestCase
         $imageLabel = 'someText';
         $imageUrl = 'someOtherText';
         $expected = 1;
-        $actual = imageShouldBeIncluded($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = imageShouldBeIncluded($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -26,8 +26,8 @@ class StackTest extends TestCase
         $imageLabel = 'someText';
         $imageUrl = '';
         $expected = 0;
-        $actual = imageShouldBeIncluded($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = imageShouldBeIncluded($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -38,8 +38,8 @@ class StackTest extends TestCase
         $imageLabel = '';
         $imageUrl = 'someText';
         $expected = 0;
-        $actual = imageShouldBeIncluded($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = imageShouldBeIncluded($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -50,8 +50,8 @@ class StackTest extends TestCase
         $imageLabel = '';
         $imageUrl = '';
         $expected = 0;
-        $actual = imageShouldBeIncluded($imageLabel,$imageUrl);
-        $this -> assertEquals($expected, $actual);
+        $actual = imageShouldBeIncluded($imageLabel, $imageUrl);
+        $this->assertEquals($expected, $actual);
     }
 
     /**
@@ -61,8 +61,8 @@ class StackTest extends TestCase
     {
         $imageLabel = 4;
         $imageUrl = [];
-        $this -> expectException(TypeError::class);
-        $actual = imageShouldBeIncluded($imageLabel,$imageUrl);
+        $this->expectException(TypeError::class);
+        $actual = imageShouldBeIncluded($imageLabel, $imageUrl);
 
     }
 

@@ -5,9 +5,10 @@
  *
  * @return bool Returns true if both values are present
  */
-function haveCredentialsBeenEntered(array $credentialsArray) : bool {
+function haveCredentialsBeenEntered(array $credentialsArray): bool
+{
     $result = false;
-    if(array_key_exists('username', $credentialsArray)) {
+    if (array_key_exists('username', $credentialsArray)) {
         if (array_key_exists('password', $credentialsArray)) {
             $result = true;
         }
@@ -22,9 +23,10 @@ function haveCredentialsBeenEntered(array $credentialsArray) : bool {
  *
  * @return bool Is the username valid?
  */
-function isUsernameValid(string $enteredUsername) : bool {
+function isUsernameValid(string $enteredUsername): bool
+{
     $result = false;
-    if($enteredUsername === 'Greengrocer') {
+    if ($enteredUsername === 'Greengrocer') {
         $result = true;
     }
     return $result;
@@ -38,9 +40,10 @@ function isUsernameValid(string $enteredUsername) : bool {
  *
  * @return bool Should the credentials be validated
  */
-function areCredentialsCorrect(string $enteredUsername, string $enteredPassword) : bool {
+function areCredentialsCorrect(string $enteredUsername, string $enteredPassword): bool
+{
     $result = false;
-    if($enteredUsername === 'Greengrocer' && $enteredPassword === 'apples') {
+    if ($enteredUsername === 'Greengrocer' && $enteredPassword === 'apples') {
         $result = true;
     }
     return $result;
@@ -53,14 +56,15 @@ function areCredentialsCorrect(string $enteredUsername, string $enteredPassword)
  *
  * @return bool Is the user approved?
  */
-function isApproved(array $credentialsArray) : bool {
+function isApproved(array $credentialsArray): bool
+{
     $result = false;
-    if(haveCredentialsBeenEntered($credentialsArray)) {
+    if (haveCredentialsBeenEntered($credentialsArray)) {
         $enteredUsername = $credentialsArray['username'];
         $enteredPassword = $credentialsArray['password'];
         if (isUsernameValid($enteredUsername)) {
             if (areCredentialsCorrect($enteredUsername, $enteredPassword)) {
-                $result=true;
+                $result = true;
             }
         }
     }

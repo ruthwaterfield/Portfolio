@@ -1,5 +1,5 @@
 <?php
-require_once ('CMSDatabaseFunctions.php');
+require_once('CMSDatabaseFunctions.php');
 
 /**
  * getContentForPage returns an array of all the contents for a specified page.
@@ -8,7 +8,8 @@ require_once ('CMSDatabaseFunctions.php');
  *
  * @return array The contents for the page (each row is an item of content)
  */
-function getContentForPage(int $pageId) : array {
+function getContentForPage(int $pageId): array
+{
     $result = [];
     try {
         $db = createPDO();
@@ -33,10 +34,11 @@ function getContentForPage(int $pageId) : array {
  *
  * @return bool 1 if the content item has an image, 0 if not.
  */
-function contentHasImage($imageLabel, $imageLocation) : bool {
+function contentHasImage($imageLabel, $imageLocation): bool
+{
     $result = 0;
-    if($imageLabel != NULL && $imageLocation != NULL) {
-        if(is_string($imageLabel) && is_string($imageLocation)) {
+    if ($imageLabel != NULL && $imageLocation != NULL) {
+        if (is_string($imageLabel) && is_string($imageLocation)) {
             $result = 1;
         }
     }
@@ -50,7 +52,8 @@ function contentHasImage($imageLabel, $imageLocation) : bool {
  *
  * @return array The content data
  */
-function getContentWithId(int $id, int $pageId) : array {
+function getContentWithId(int $id, int $pageId): array
+{
     $result = [];
     try {
         $db = createPDO();
@@ -77,7 +80,8 @@ function getContentWithId(int $id, int $pageId) : array {
  *
  * @return array The content data
  */
-function getContentWithTextLabel(string $textLabel, int $pageId) : array {
+function getContentWithTextLabel(string $textLabel, int $pageId): array
+{
     $result = [];
     try {
         $db = createPDO();
@@ -96,4 +100,5 @@ function getContentWithTextLabel(string $textLabel, int $pageId) : array {
     }
     return $result;
 }
+
 ?>

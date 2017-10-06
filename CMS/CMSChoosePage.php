@@ -1,7 +1,7 @@
-<?php require_once ('CMSNavigation.php');
+<?php require_once('CMSNavigation.php');
 session_start();
 if ($_SESSION['loggedIn'] != 1) {
-header('Location: index.php');
+    header('Location: index.php');
 }
 ?>
 
@@ -26,12 +26,12 @@ header('Location: index.php');
 <div class="mainContent">
 
     <?php $pageArray = getPages();
-        foreach ($pageArray as $page) { ?>
-            <div class="pageChooser">
-            <a href="CMSPageContent.php?pageId=<?php echo $page['id'];?>">
-                <?php echo $page['name'];?>
+    foreach ($pageArray as $page) { ?>
+        <div class="pageChooser">
+            <a href="CMSPageContent.php?pageId=<?php echo $page['id']; ?>">
+                <?php echo $page['name']; ?>
             </a>
-            </div>
+        </div>
     <?php } ?>
 
 

@@ -21,16 +21,16 @@ if ($_SESSION['loggedIn'] == 1) {
 
 <div class="mainContent">
 
-<form action="CMSLogIn.php" method="POST">
-    <h2>
-        Please enter your username and password and click Log in:
-    </h2>
-    <p>Username:</p>
-    <input name="username" type="text" value=""> <br/>
-    <p>Password:</p>
-    <input name="password" type="password" value=""> <br/>
-    <input name="login" type="submit" value="Log in">
-</form>
+    <form action="CMSLogIn.php" method="POST">
+        <h2>
+            Please enter your username and password and click Log in:
+        </h2>
+        <p>Username:</p>
+        <input name="username" type="text" value=""> <br/>
+        <p>Password:</p>
+        <input name="password" type="password" value=""> <br/>
+        <input name="login" type="submit" value="Log in">
+    </form>
 
 </div>
 

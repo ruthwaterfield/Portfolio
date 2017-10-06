@@ -2,7 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 
-require ('../CMS/CMSLogInFunctions.php');
+require('../CMS/CMSLogInFunctions.php');
 
 class StackTest extends TestCase
 {
@@ -16,7 +16,7 @@ class StackTest extends TestCase
     {
         $creds = ['username' => $this::USERNAME, 'password' => $this::PASSWORD];
         $actual = haveCredentialsBeenEntered($creds);
-        $this -> assertTrue($actual);
+        $this->assertTrue($actual);
     }
 
     /**
@@ -26,7 +26,7 @@ class StackTest extends TestCase
     {
         $creds = ['username' => 'Redgrocer', 'password' => 'pears'];
         $actual = haveCredentialsBeenEntered($creds);
-        $this -> assertTrue($actual);
+        $this->assertTrue($actual);
     }
 
     /**
@@ -36,7 +36,7 @@ class StackTest extends TestCase
     {
         $creds = [2, 4, 5];
         $actual = haveCredentialsBeenEntered($creds);
-        $this -> assertFalse($actual);
+        $this->assertFalse($actual);
     }
 
     /**
@@ -46,7 +46,7 @@ class StackTest extends TestCase
     {
         $creds = ['lemons' => 4, 'strawberries' => 5];
         $actual = haveCredentialsBeenEntered($creds);
-        $this -> assertFalse($actual);
+        $this->assertFalse($actual);
     }
 
     /**
@@ -54,9 +54,9 @@ class StackTest extends TestCase
      */
     public function testFhaveCredentialsBeenEntered()
     {
-        $creds= ['username' => 'red', 'lemons' => 5, 'password' => 3423];
+        $creds = ['username' => 'red', 'lemons' => 5, 'password' => 3423];
         $actual = haveCredentialsBeenEntered($creds);
-        $this -> assertTrue($actual);
+        $this->assertTrue($actual);
     }
 
     /**
@@ -64,7 +64,7 @@ class StackTest extends TestCase
      */
     public function testMhaveCredentialsBeenEntered()
     {
-        $this -> expectException(TypeError::class);
+        $this->expectException(TypeError::class);
         haveCredentialsBeenEntered('someRandomString');
     }
 
@@ -74,7 +74,7 @@ class StackTest extends TestCase
     public function testSisUsernameValid()
     {
         $actual = isUsernameValid($this::USERNAME);
-        $this -> assertTrue($actual);
+        $this->assertTrue($actual);
     }
 
 }

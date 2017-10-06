@@ -1,62 +1,62 @@
 header nav ul li:nth-child(3) a {
-	color: #FFF9DB;
+    color: #FFF9DB;
 }
 
 @media screen and (min-height: 1267px) {
-	.central {
-		height: calc(100vh - 70px);
-	}
+    .central {
+        height: calc(100vh - 70px);
+    }
 }
 
 .content .featureBanner {
-	background-color: #FFF9DB;
+    background-color: #FFF9DB;
 }
 
 .content .featureBanner h2 {
-	margin: 0;
-	padding: 15px 0 0 15px;
-	font-size: 2rem;
-	color: #23408F;
+    margin: 0;
+    padding: 15px 0 0 15px;
+    font-size: 2rem;
+    color: #23408F;
 }
 
 .content .infoItem:nth-child(2) {
-	background-color: #FFF9DB;
-	padding: 0% 2% 2% 2%;
+    background-color: #FFF9DB;
+    padding: 0% 2% 2% 2%;
 }
 
 .content .infoItem {
-	border-style: solid;
-	border-width: 0px 0px 2px 0px;
-	border-color: #23408F;
-	padding: 2%;
-	vertical-align: middle;
+    border-style: solid;
+    border-width: 0px 0px 2px 0px;
+    border-color: #23408F;
+    padding: 2%;
+    vertical-align: middle;
 }
 
 .content .infoItem:last-child {
-	border-width: 0px;
+    border-width: 0px;
 }
 
 .content .infoItem img {
-	width: 35%;
-	vertical-align: middle;
+    width: 35%;
+    vertical-align: middle;
 }
 
 .content .infoItem p {
-	margin: 0;
-	padding: 3%;
-	width: 64%;
-	display: inline-block;
-	vertical-align: middle;
+    margin: 0;
+    padding: 3%;
+    width: 64%;
+    display: inline-block;
+    vertical-align: middle;
 }
 
 @media screen and (max-width: 750px) {
-	
-	.content .infoItem img {
-		margin: 0 15%;
-		width: 70%;
-	}
-	
-	.content .infoItem p {
-		width: 100%;
-	}
+
+    .content .infoItem img {
+        margin: 0 15%;
+        width: 70%;
+    }
+
+    .content .infoItem p {
+        width: 100%;
+    }
 }

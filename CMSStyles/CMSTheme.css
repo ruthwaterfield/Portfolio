@@ -72,7 +72,7 @@ form textarea {
     margin: 2px;
 }
 
-textarea:focus, input:focus{
+textarea:focus, input:focus {
     outline: none;
 }
 

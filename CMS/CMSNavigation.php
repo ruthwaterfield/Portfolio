@@ -1,12 +1,13 @@
 <?php
-require_once ('CMSDatabaseFunctions.php');
+require_once('CMSDatabaseFunctions.php');
 
 /**
  * getPages returns an array containing the names and ids of all pages in the website
  *
  * @return array each row has a name field and an id field
  */
-function getPages() : array {
+function getPages(): array
+{
     $result = [];
     try {
         $db = createPDO();
@@ -29,7 +30,8 @@ function getPages() : array {
  *
  * @return string The name of the page
  */
-function getPageNameFromPageId(int $pageId) : string {
+function getPageNameFromPageId(int $pageId): string
+{
     $result = 'None selected';
     try {
         $db = createPDO();

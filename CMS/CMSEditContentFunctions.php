@@ -1,5 +1,5 @@
 <?php
-require_once ('CMSDatabaseFunctions.php');
+require_once('CMSDatabaseFunctions.php');
 /**
  * editContentWithId updates content item given the id of the item
  *
@@ -11,12 +11,13 @@ require_once ('CMSDatabaseFunctions.php');
  *
  * @return bool Success (1) or failure (0)
  */
-function editContentWithId(string $textLabel, string $textContent, string $imageLabel, string $imageLocation, int $id) : bool {
+function editContentWithId(string $textLabel, string $textContent, string $imageLabel, string $imageLocation, int $id): bool
+{
     $result = 0;
     try {
         $db = createPDO();
 
-        if(imageShouldBeAdded($imageLabel, $imageLocation)) {
+        if (imageShouldBeAdded($imageLabel, $imageLocation)) {
             $sql = "UPDATE `Content` SET `textLabel` = :textLabel, `textContent` = :textContent, `imageLabel` = :imageLabel, `imageLocation` = :imageLocation WHERE `id` = :id;";
             $query = $db->prepare($sql);
 
@@ -53,9 +54,10 @@ function editContentWithId(string $textLabel, string $textContent, string $image
  *
  * @return bool image should be added (1), or image should not be added (0)
  */
-function imageShouldBeIncluded(string $imageLabel, string $imageLocation) : bool {
+function imageShouldBeIncluded(string $imageLabel, string $imageLocation): bool
+{
     $result = 1;
-    if($imageLabel == "" || $imageLocation == "") {
+    if ($imageLabel == "" || $imageLocation == "") {
         $result = 0;
     }
     return $result;
@@ -68,7 +70,8 @@ function imageShouldBeIncluded(string $imageLabel, string $imageLocation) : bool
  *
  * @return bool Success(1) or failure (0) of the procedure.
  */
-function markContentAsDeleted(int $id) : bool {
+function markContentAsDeleted(int $id): bool
+{
     $result = 0;
     try {
         $db = createPDO();
@@ -87,4 +90,5 @@ function markContentAsDeleted(int $id) : bool {
 
     return $result;
 }
+
 ?>

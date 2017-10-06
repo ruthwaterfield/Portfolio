@@ -77,9 +77,9 @@ if (isset($_GET['pageId'])) {
             <div class="divider">
             </div>
             <div class="buttonDiv">
-            <a href="CMSEditContentForm.php?id=<?php echo $contentItem['id']; ?>">
-                Edit/Delete this item
-            </a>
+                <a href="CMSEditContentForm.php?id=<?php echo $contentItem['id']; ?>">
+                    Edit/Delete this item
+                </a>
             </div>
         </div>
         <?php
@@ -88,10 +88,10 @@ if (isset($_GET['pageId'])) {
 
     <div class="contentItem">
         <div class="buttonDiv">
-        <a href="CMSAddContentForm.php">
-            Add content
-        </a>
-    </div>
+            <a href="CMSAddContentForm.php">
+                Add content
+            </a>
+        </div>
     </div>
 
 
